@@ -1,0 +1,75 @@
+FROM scratch
+
+ENV GCC_VERSION "10.2.0"
+
+#/bin
+COPY /bin/busybox /bin/
+
+COPY /bin/sh /bin/
+COPY /bin/ls /bin/
+COPY /bin/ln /bin/
+COPY /bin/mkdir /bin/
+COPY /bin/cat /bin/
+COPY /bin/tar /bin/
+COPY /bin/gzip /bin/
+COPY /bin/bzip2 /bin/
+COPY /bin/bunzip2 /bin/
+COPY /bin/rm /bin/
+COPY /bin/mktemp /bin/
+COPY /bin/sed /bin/
+COPY /bin/chmod /bin/
+COPY /bin/mv /bin/
+
+#/usr/bin
+COPY /usr/bin/wc /usr/bin/
+COPY /usr/bin/readlink /usr/bin/
+COPY /usr/bin/basename /usr/bin/
+COPY /usr/bin/dirname /usr/bin/
+COPY /usr/bin/c_rehash /usr/bin/
+COPY /usr/bin/expr /usr/bin/
+COPY /usr/bin/env /usr/bin/
+COPY /usr/bin/find /usr/bin/
+
+#/lib64
+COPY /lib64/libc.so.6 /lib64/
+COPY /lib64/libz.so.1 /lib64/
+COPY /lib64/libm.so.6 /lib64/
+COPY /lib64/libdl.so.2 /lib64/
+COPY /lib64/libutil.so.1 /lib64/
+COPY /lib64/libnss_compat.so.2 /lib64/
+COPY /lib64/libnss_db.so.2 /lib64/
+COPY /lib64/libnss_dns.so.2 /lib64/
+COPY /lib64/libnss_files.so.2 /lib64/
+COPY /lib64/libresolv.so.2 /lib64/
+COPY /lib64/libacl.so.1 /lib64/
+COPY /lib64/libattr.so.1 /lib64/
+COPY /lib64/libreadline.so.8 /lib64/
+COPY /lib64/libtinfo.so.6 /lib64/
+COPY /lib64/libtinfow.so.6 /lib64/
+COPY /lib64/libpthread.so.0 /lib64/
+COPY /lib64/ld-linux-x86-64.so.2 /lib64/
+COPY /lib64/librt.so.1 /lib64/
+
+#/usr/lib64
+COPY /usr/lib64/libcrypto.so.1.1 /usr/lib64/
+COPY /usr/lib64/libssl.so.1.1 /usr/lib64/
+RUN ln -s /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so
+RUN ln -s /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so
+COPY /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/libstdc++.so.6 /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/
+COPY /lib64/librt.so.1 /lib64/
+COPY /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/libgcc_s* /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/
+
+#/usr/share
+COPY /usr/share/ca-certificates/ /usr/share/ca-certificates
+
+# etc
+COPY /etc/ld.so.* /etc/
+COPY /etc/ssl/ /etc/ssl/
+COPY /etc/ca-certificates.conf /etc/
+COPY /etc/os-release /etc/
+COPY /etc/profile /etc/
+
+RUN mkdir /tmp/
+
+COPY /var/empty /var
+
