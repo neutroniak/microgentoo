@@ -26,4 +26,5 @@ RUN cd /usr/bin && ln -s ../lib/python-exec/python-exec2 python3-config
 COPY /etc/python-exec/ /etc/python-exec/
 
 COPY /usr/lib64/libexpat.so.1 /usr/lib64/
+COPY /usr/lib64/libffi.so.7 /usr/lib64/
 
