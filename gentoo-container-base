@@ -2,34 +2,6 @@ FROM scratch
 
 ENV GCC_VERSION "10.2.0"
 
-#/bin
-COPY /bin/busybox /bin/
-
-COPY /bin/sh /bin/
-COPY /bin/ls /bin/
-COPY /bin/ln /bin/
-COPY /bin/mkdir /bin/
-COPY /bin/cat /bin/
-COPY /bin/tar /bin/
-COPY /bin/gzip /bin/
-COPY /bin/bzip2 /bin/
-COPY /bin/bunzip2 /bin/
-COPY /bin/rm /bin/
-COPY /bin/mktemp /bin/
-COPY /bin/sed /bin/
-COPY /bin/chmod /bin/
-COPY /bin/mv /bin/
-
-#/usr/bin
-COPY /usr/bin/wc /usr/bin/
-COPY /usr/bin/readlink /usr/bin/
-COPY /usr/bin/basename /usr/bin/
-COPY /usr/bin/dirname /usr/bin/
-COPY /usr/bin/c_rehash /usr/bin/
-COPY /usr/bin/expr /usr/bin/
-COPY /usr/bin/env /usr/bin/
-COPY /usr/bin/find /usr/bin/
-
 #/lib64
 COPY /lib64/libc.so.6 /lib64/
 COPY /lib64/libz.so.1 /lib64/
@@ -49,6 +21,25 @@ COPY /lib64/libtinfow.so.6 /lib64/
 COPY /lib64/libpthread.so.0 /lib64/
 COPY /lib64/ld-linux-x86-64.so.2 /lib64/
 COPY /lib64/librt.so.1 /lib64/
+
+#busybos bootstrap
+COPY /bin/busybox /bin/
+COPY /busybox.sh /
+
+COPY /bin/sh /bin/
+COPY /bin/ln /bin/
+COPY /bin/mkdir /bin/
+
+RUN mkdir /sbin
+RUN sh ./busybox.sh
+
+#RUN rm /bin/mkdir
+RUN ln -sf /bin/busybox /bin/mkdir
+RUN ln -sf /bin/busybox /bin/ln
+RUN ln -sf /bin/busybox /bin/sh
+
+#/usr/bin
+COPY /usr/bin/c_rehash /usr/bin/
 
 #/usr/lib64
 COPY /usr/lib64/libcrypto.so.1.1 /usr/lib64/
@@ -72,4 +63,6 @@ COPY /etc/profile /etc/
 RUN mkdir /tmp/
 
 COPY /var/empty /var
+
+RUN rm /busybox.sh
 
