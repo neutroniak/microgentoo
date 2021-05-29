@@ -1,6 +1,10 @@
 #!/bin/sh
 
 mv /usr/lib/python3.8/test .
+mv /usr/lib/python3.8/site-packages .
+mkdir /usr/lib/python3.8/site-packages
+cp site-packages/epython.py /usr/lib/python3.8/site-packages/
+
 mv /usr/lib64/node_modules/npm/docs .
 
 buildah bud -f gentoo-container-base -t gentoo-container-base:latest
@@ -10,6 +14,8 @@ buildah bud -f gentoo-container-nodejs -t gentoo-container-nodejs:latest
 buildah bud -f gentoo-container-zeromq -t gentoo-container-zeromq:latest
 
 mv test /usr/lib/python3.8/
+rm -rf /usr/lib/python3.8/site-packages
+mv site-packages /usr/lib/python3.8/
 mv docs /usr/lib64/node_modules/npm/
 
 buildah push gentoo-container-base:latest ${REGISTRY_URL}/gentoo-container-base:latest
