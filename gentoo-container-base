@@ -41,6 +41,8 @@ RUN ln -sf /bin/busybox /bin/sh
 #/usr/bin
 COPY /usr/bin/c_rehash /usr/bin/
 
+RUN ln -sf /bin/busybox /usr/bin/env
+
 #/usr/lib64
 COPY /usr/lib64/libcrypto.so.1.1 /usr/lib64/
 COPY /usr/lib64/libssl.so.1.1 /usr/lib64/
