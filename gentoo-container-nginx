@@ -1,0 +1,6 @@
+FROM gentoo-container-base
+
+COPY /usr/sbin/nginx /usr/sbin/
+COPY /etc/nginx/ /etc/
+COPY /var/www/ /var/
+
