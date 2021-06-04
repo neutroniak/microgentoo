@@ -1,6 +1,6 @@
 FROM gentoo-container-base
 
-ENV PYTHON_VERSION "3.8"
+ARG PYTHON_VERSION
 
 #python
 

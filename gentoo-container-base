@@ -1,6 +1,6 @@
 FROM scratch
 
-ENV GCC_VERSION "10.2.0"
+ARG GCC_VERSION
 
 #/lib64
 COPY /lib64/libc.so.6 /lib64/
