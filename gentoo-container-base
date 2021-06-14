@@ -21,6 +21,7 @@ COPY /lib64/libtinfow.so.6 /lib64/
 COPY /lib64/libpthread.so.0 /lib64/
 COPY /lib64/ld-linux-x86-64.so.2 /lib64/
 COPY /lib64/librt.so.1 /lib64/
+COPY /lib64/libcrypt.so.1 /lib64/
 
 #busybos bootstrap
 COPY /bin/busybox /bin/
@@ -45,9 +46,10 @@ RUN ln -sf /bin/busybox /usr/bin/env
 
 #/usr/lib64
 COPY /usr/lib64/libcrypto.so.1.1 /usr/lib64/
+RUN ln -s /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so
+RUN ln -s /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1
 COPY /usr/lib64/libssl.so.1.1 /usr/lib64/
 RUN ln -s /usr/lib64/libssl.so.1.1 /usr/lib64/libssl.so
-RUN ln -s /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so
 COPY /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/libstdc++.so.6 /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/
 COPY /lib64/librt.so.1 /lib64/
 COPY /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/libgcc_s* /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_VERSION}/
@@ -61,6 +63,9 @@ COPY /etc/ssl/ /etc/ssl/
 COPY /etc/ca-certificates.conf /etc/
 COPY /etc/os-release /etc/
 COPY /etc/profile /etc/
+
+RUN touch /etc/passwd
+RUN touch /etc/group
 
 RUN mkdir /tmp/
 
