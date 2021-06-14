@@ -1,6 +1,17 @@
-FROM gentoo-container-base
+FROM gentoo-container-base:latest
+
+COPY /lib64/libpcre.so.1 /lib64/
 
 COPY /usr/sbin/nginx /usr/sbin/
-COPY /etc/nginx/ /etc/
-COPY /var/www/ /var/
+COPY /etc/nginx/ /etc/nginx/
+COPY /var/www/ /var/www/
+
+RUN mkdir -p /var/log/nginx
+RUN mkdir -p /var/lib/nginx/tmp
+
+RUN addgroup nginx
+RUN adduser -h /var/lib/nginx -SD -G nginx -s /sbin/nologin nginx
+
+RUN chown -R nginx:nginx /var/log/nginx
+RUN chown -R nginx:nginx /var/lib/nginx
 
