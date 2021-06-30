@@ -1,0 +1,4 @@
+FROM gentoo-container-base
+
+COPY /usr/bin/packer /usr/bin/
+
