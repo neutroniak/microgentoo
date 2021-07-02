@@ -68,6 +68,7 @@ RUN touch /etc/passwd
 RUN touch /etc/group
 
 RUN mkdir /tmp/
+RUN chmod 777 /tmp
 
 COPY /var/empty /var
 
