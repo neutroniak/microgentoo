@@ -64,8 +64,8 @@ COPY /etc/ca-certificates.conf /etc/
 COPY /etc/os-release /etc/
 COPY /etc/profile /etc/
 
-RUN touch /etc/passwd
-RUN touch /etc/group
+RUN 'echo root:x:0:0:root:/root:/bin/sh' > /etc/passwd
+RUN 'echo root:x:0:root' > /etc/group
 
 RUN mkdir /tmp/
 RUN chmod 777 /tmp
