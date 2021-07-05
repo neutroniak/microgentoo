@@ -30,5 +30,5 @@ buildah push ${REGISTRY_ARGS} gentoo-container-python3:latest ${REGISTRY_URL}/ge
 buildah push ${REGISTRY_ARGS} gentoo-container-nodejs:latest ${REGISTRY_URL}/gentoo-container-nodejs:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-zeromq:latest ${REGISTRY_URL}/gentoo-container-zeromq:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-packer:latest ${REGISTRY_URL}/gentoo-container-packer:latest
-buildah push ${REGISTRY_ARGS} gentoo-container-opensshr:latest ${REGISTRY_URL}/gentoo-container-openssh:latest
+buildah push ${REGISTRY_ARGS} gentoo-container-openssh:latest ${REGISTRY_URL}/gentoo-container-openssh:latest
 
