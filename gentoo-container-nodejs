@@ -10,6 +10,9 @@ RUN ln -s /usr/lib64/node_modules/npm/bin/npx-cli.js /usr/bin/npx
 #/usr/lib64
 COPY /usr/lib64/libnghttp2.so.* /usr/lib64/
 COPY /usr/lib64/libcares.so.2 /usr/lib64/
+COPY /usr/lib64/libuv.so.1.0.0 /usr/lib64/
+RUN ln -s /usr/lib64/libuv.so.1.0.0 /usr/lib64/libuv.so
+RUN ln -s /usr/lib64/libuv.so.1.0.0 /usr/lib64/libuv.so.1
 
 COPY /usr/lib64/libbrotlidec.so.1 /usr/lib64/
 COPY /usr/lib64/libbrotlienc.so.1 /usr/lib64/
