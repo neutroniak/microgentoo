@@ -18,6 +18,7 @@ buildah bud -f gentoo-container-zeromq -t gentoo-container-zeromq:latest
 buildah bud -f gentoo-container-nginx -t gentoo-container-nginx:latest
 buildah bud -f gentoo-container-packer -t gentoo-container-packer:latest
 buildah bud -f gentoo-container-openssh -t gentoo-container-openssh:latest
+buildah bud -f gentoo-container-git -t gentoo-container-git:latest
 
 mv test /usr/lib/python${PYTHON_VERSION}/
 rm -rf /usr/lib/python${PYTHON_VERSION}/site-packages
@@ -31,4 +32,5 @@ buildah push ${REGISTRY_ARGS} gentoo-container-nodejs:latest ${REGISTRY_URL}/gen
 buildah push ${REGISTRY_ARGS} gentoo-container-zeromq:latest ${REGISTRY_URL}/gentoo-container-zeromq:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-packer:latest ${REGISTRY_URL}/gentoo-container-packer:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-openssh:latest ${REGISTRY_URL}/gentoo-container-openssh:latest
+buildah push ${REGISTRY_ARGS} gentoo-container-git:latest ${REGISTRY_URL}/gentoo-container-git:latest
 

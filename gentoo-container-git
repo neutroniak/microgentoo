@@ -1,0 +1,24 @@
+FROM gentoo-container-base
+
+COPY /usr/bin/git-upload-pack /usr/bin/
+COPY /usr/bin/git-upload-archive /usr/bin/
+COPY /usr/bin/git-receive-pack /usr/bin/
+COPY /usr/bin/import-tars /usr/bin/
+COPY /usr/bin/git /usr/bin/ 
+
+COPY /usr/libexec/git-core/git-verify-tag /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-verify-pack /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-verify-commit /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-var /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-pull /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-fetch /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-clone /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-checkout /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-branch /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git /usr/libexec/git-core/
+COPY /usr/libexec/git-core/git-http-fetch /usr/libexec/git-core/
+
+COPY /usr/bin/ssh /usr/bin/
+COPY /usr/bin/scp /usr/bin/
+COPY /usr/bin/sftp /usr/bin/
+
