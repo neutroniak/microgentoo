@@ -2,6 +2,9 @@
 
 export GCC_VERSION=$(gcc --version |rev |grep ccg|awk '{print $1}'|rev)
 export PYTHON_VERSION="3.9"
+export RUBY_VERSION="2.6"
+
+export RUBY_VERSION_ALPHA=${RUBY_VERSION/\./}
 
 mv /usr/lib/python${PYTHON_VERSION}/test .
 mv /usr/lib/python${PYTHON_VERSION}/site-packages .
@@ -19,6 +22,8 @@ buildah bud -f gentoo-container-nginx -t gentoo-container-nginx:latest
 buildah bud -f gentoo-container-packer -t gentoo-container-packer:latest
 buildah bud -f gentoo-container-openssh -t gentoo-container-openssh:latest
 buildah bud -f gentoo-container-git -t gentoo-container-git:latest
+buildah bud -f gentoo-container-openjdk11 -t gentoo-container-openjdk11:latest
+buildah bud --build-arg RUBY_VERSION=${RUBY_VERSION_ALPHA} -f gentoo-container-ruby -t gentoo-container-ruby:latest
 
 mv test /usr/lib/python${PYTHON_VERSION}/
 rm -rf /usr/lib/python${PYTHON_VERSION}/site-packages
@@ -33,4 +38,5 @@ buildah push ${REGISTRY_ARGS} gentoo-container-zeromq:latest ${REGISTRY_URL}/gen
 buildah push ${REGISTRY_ARGS} gentoo-container-packer:latest ${REGISTRY_URL}/gentoo-container-packer:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-openssh:latest ${REGISTRY_URL}/gentoo-container-openssh:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-git:latest ${REGISTRY_URL}/gentoo-container-git:latest
+buildah push ${REGISTRY_ARGS} gentoo-container-openjdk11:latest ${REGISTRY_URL}/gentoo-container-openjdk11:latest
 
