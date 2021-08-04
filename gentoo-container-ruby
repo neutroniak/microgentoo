@@ -1,0 +1,15 @@
+FROM gentoo-container-base
+
+ARG RUBY_VERSION
+
+COPY /usr/bin/bundle /usr/bin/
+COPY /usr/bin/bundler /usr/bin/
+COPY /usr/bin/rake /usr/bin/
+COPY /usr/bin/racc /usr/bin/
+COPY /usr/bin/gem${RUBY_VERSION} /usr/bin/
+COPY /usr/bin/irb${RUBY_VERSION} /usr/bin/
+COPY /usr/bin/erb${RUBY_VERSION} /usr/bin/
+COPY /usr/bin/ruby${RUBY_VERSION} /usr/bin/
+
+COPY /usr/lib64/ruby/ /usr/lib64/ruby/
+
