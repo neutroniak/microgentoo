@@ -2,8 +2,6 @@ FROM gentoo-container-base
 
 ARG PYTHON_VERSION
 
-#python
-
 COPY /usr/lib/python${PYTHON_VERSION}/ /usr/lib/python${PYTHON_VERSION}/
 COPY /usr/lib/python-exec/python${PYTHON_VERSION}/ /usr/lib/python-exec/python${PYTHON_VERSION}/
 COPY /usr/lib64/libpython${PYTHON_VERSION}.so.1.0 /usr/lib64/
