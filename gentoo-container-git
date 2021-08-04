@@ -18,7 +18,3 @@ COPY /usr/libexec/git-core/git-branch /usr/libexec/git-core/
 COPY /usr/libexec/git-core/git /usr/libexec/git-core/
 COPY /usr/libexec/git-core/git-http-fetch /usr/libexec/git-core/
 
-COPY /usr/bin/ssh /usr/bin/
-COPY /usr/bin/scp /usr/bin/
-COPY /usr/bin/sftp /usr/bin/
-
