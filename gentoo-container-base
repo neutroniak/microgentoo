@@ -22,6 +22,7 @@ COPY /lib64/libpthread.so.0 /lib64/
 COPY /lib64/ld-linux-x86-64.so.2 /lib64/
 COPY /lib64/librt.so.1 /lib64/
 COPY /lib64/libcrypt.so.1 /lib64/
+COPY /lib64/libbz2.so.1 /lib64/
 
 #busybos bootstrap
 COPY /bin/busybox /bin/
