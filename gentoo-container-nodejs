@@ -18,4 +18,6 @@ COPY /usr/lib64/libbrotlidec.so.1 /usr/lib64/
 COPY /usr/lib64/libbrotlienc.so.1 /usr/lib64/
 COPY /usr/lib64/libbrotlicommon.so.1 /usr/lib64/
 COPY /usr/lib64/libicudata.so.69 /usr/lib64/
+COPY /usr/lib64/libicui18n.so.69 /usr/lib64/
+COPY /usr/lib64/libicuuc.so.69 /usr/lib64/
 
