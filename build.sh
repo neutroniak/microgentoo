@@ -1,11 +1,16 @@
 #!/bin/sh
 
 export GCC_VERSION=$(gcc --version |rev |grep ccg|awk '{print $1}'|rev)
-export PYTHON_VERSION="3.9"
-export RUBY_VERSION="2.6"
-export PHP_VERSION="7.4"
+export PYTHON_VERSION=$(python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
+export RUBY_VERSION=$(ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2}')
+export PHP_VERSION=$(php -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2}')
 
 export RUBY_VERSION_ALPHA=${RUBY_VERSION/\./}
+
+cp gentoo-container-* busybox.sh passwd group /
+
+OLDPWD=$(pwd)
+cd /
 
 mv /usr/lib/python${PYTHON_VERSION}/test .
 mv /usr/lib/python${PYTHON_VERSION}/site-packages .
@@ -43,4 +48,8 @@ buildah push ${REGISTRY_ARGS} gentoo-container-git:latest ${REGISTRY_URL}/gentoo
 buildah push ${REGISTRY_ARGS} gentoo-container-openjdk:latest ${REGISTRY_URL}/gentoo-container-openjdk:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-ruby:latest ${REGISTRY_URL}/gentoo-container-ruby:latest
 buildah push ${REGISTRY_ARGS} gentoo-container-php:latest ${REGISTRY_URL}/gentoo-container-php:latest
+
+rm gentoo-container-* busybox.sh passwd group
+cd $OLDPWD
+
 
