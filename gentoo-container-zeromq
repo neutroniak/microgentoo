@@ -2,4 +2,6 @@ FROM gentoo-container-base
 
 COPY /usr/lib64/libzmq.so.5 /usr/lib64/
 COPY /usr/lib64/libsodium.so.23 /usr/lib64/
+COPY /usr/lib64/libbsd.so.0 /usr/lib64/
+COPY /usr/lib64/libmd.so.0 /usr/lib64/
 
