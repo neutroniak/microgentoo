@@ -1,0 +1,11 @@
+# suggested use flags
+
+net-nds/openldap sasl pbkdf2
+app-text/ghostscript-gpl cups
+dev-lang/ruby -jemalloc jit
+app-eselect/eselect-php fpm
+dev-lang/php gd curl imap bcmath ldap sockets xmlwriter intl xmlreader zip soap fpm exif truetype postgres mysqli mhash xslt ldap-sasl sqlite firebird calendar gmp tidy xpm xmlrpc
+mail-mta/postfix ssl ldap ldap-bind sasl
+
+net-libs/zeromq drafts sodium
+
