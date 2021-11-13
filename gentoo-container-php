@@ -22,7 +22,7 @@ RUN ln -s /usr/lib64/php${PHP_VERSION}/bin/phar.phar /usr/bin/phar
 COPY /usr/lib64/php${PHP_VERSION}/lib64/opcache.so /usr/lib64/php${PHP_VERSION}/lib64/ 
 
 COPY /usr/lib64/libc-client.so.1 /usr/lib64/
-COPY /usr/lib64/libtidy.so.5 /usr/lib64/libtidy.so.5
+COPY /usr/lib64/libtidy.so.58 /usr/lib64/libtidy.so.58
 COPY /usr/lib64/postgresql-13/lib64/libpq.so.5 /usr/lib64/postgresql-13/lib64/libpq.so.5
 COPY /usr/lib64/libldap-2.4.so.2 /usr/lib64/libldap-2.4.so.2
 COPY /usr/lib64/liblber-2.4.so.2 /usr/lib64/liblber-2.4.so.2
