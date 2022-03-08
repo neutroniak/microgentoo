@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export GCC_VERSION=$(gcc --version |rev |grep ccg|awk '{print $1}'|rev)
+export GCC_VERSION=$(gcc --version|awk '{print $5}'|head -n 1)
 export PYTHON_VERSION=$(python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
 export RUBY_VERSION=$(ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2}')
 export PHP_VERSION=$(php -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2}')
