@@ -169,6 +169,7 @@
 /bin/busybox ln -s /bin/busybox  /bin/setserial
 /bin/busybox ln -s /bin/busybox  /bin/setsid
 /bin/busybox ln -s /bin/busybox  /bin/setuidgid
+/bin/busybox ln -s /bin/busybox  /bin/sh
 /bin/busybox ln -s /bin/busybox  /bin/sha1sum
 /bin/busybox ln -s /bin/busybox  /bin/sha256sum
 /bin/busybox ln -s /bin/busybox  /bin/sha3sum
@@ -341,7 +342,6 @@
 /bin/busybox ln -s /bin/busybox  /sbin/setconsole
 /bin/busybox ln -s /bin/busybox  /sbin/setfont
 /bin/busybox ln -s /bin/busybox  /sbin/setlogcons
-/bin/busybox ln -s /bin/busybox  /sbin/sh
 /bin/busybox ln -s /bin/busybox  /sbin/start-stop-daemon
 /bin/busybox ln -s /bin/busybox  /sbin/swapoff
 /bin/busybox ln -s /bin/busybox  /sbin/swapon
