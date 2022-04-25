@@ -166,7 +166,7 @@ gentoo_container_openssh_client() {
 
 	CONTAINER=$(buildah from gentoo-container-base)
 
-	export SSH_VERSION=$(ssh -V 2>/dev/stdout|awk '{print $1}'|sed 's/OpenSSH_//g'|sed 's/,//g')
+	export SSH_VERSION=$(equery list "*openssh*"|line 2 |awk -F '/' '{print $2}'|sed 's/openssh-//g'|sed 's/_.*.$//g'| awk -F "." '{print $1"."$2.".y"}')
 
 	buildah copy $CONTAINER  /etc/ssh/moduli /etc/ssh/
 	buildah copy $CONTAINER /etc/ssh/ssh_config /etc/ssh/
