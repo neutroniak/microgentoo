@@ -1,0 +1,4 @@
+**/site-packages/*
+**/python**/**/test/*
+**/node/**/docs/*
+
