@@ -1,368 +1,368 @@
 #!/bin/sh
 
-ln -s /bin/busybox  /bin/[
-ln -s /bin/busybox  /bin/[[
-ln -s /bin/busybox  /bin/ar
-ln -s /bin/busybox  /bin/arch
-ln -s /bin/busybox  /bin/ash
-ln -s /bin/busybox  /bin/awk
-ln -s /bin/busybox  /bin/base64
-ln -s /bin/busybox  /bin/basename
-ln -s /bin/busybox  /bin/bb
-ln -s /bin/busybox  /bin/bbconfig
-ln -s /bin/busybox  /bin/bbsh
-ln -s /bin/busybox  /bin/bc
-ln -s /bin/busybox  /bin/blkdiscard
-ln -s /bin/busybox  /bin/bunzip2
-ln -s /bin/busybox  /bin/bzcat
-ln -s /bin/busybox  /bin/bzip2
-ln -s /bin/busybox  /bin/cal
-ln -s /bin/busybox  /bin/cat
-ln -s /bin/busybox  /bin/chattr
-ln -s /bin/busybox  /bin/chgrp
-ln -s /bin/busybox  /bin/chmod
-ln -s /bin/busybox  /bin/chown
-ln -s /bin/busybox  /bin/chpst
-ln -s /bin/busybox  /bin/chrt
-ln -s /bin/busybox  /bin/chvt
-ln -s /bin/busybox  /bin/cksum
-ln -s /bin/busybox  /bin/clear
-ln -s /bin/busybox  /bin/cmp
-ln -s /bin/busybox  /bin/comm
-ln -s /bin/busybox  /bin/conspy
-ln -s /bin/busybox  /bin/cp
-ln -s /bin/busybox  /bin/cpio
-ln -s /bin/busybox  /bin/cryptpw
-ln -s /bin/busybox  /bin/cttyhack
-ln -s /bin/busybox  /bin/cut
-ln -s /bin/busybox  /bin/date
-ln -s /bin/busybox  /bin/dd
-ln -s /bin/busybox  /bin/deallocvt
-ln -s /bin/busybox  /bin/df
-ln -s /bin/busybox  /bin/diff
-ln -s /bin/busybox  /bin/dirname
-ln -s /bin/busybox  /bin/dmesg
-ln -s /bin/busybox  /bin/dnsdomainname
-ln -s /bin/busybox  /bin/dos2unix
-ln -s /bin/busybox  /bin/du
-ln -s /bin/busybox  /bin/dumpkmap
-ln -s /bin/busybox  /bin/dumpleases
-ln -s /bin/busybox  /bin/echo
-ln -s /bin/busybox  /bin/ed
-ln -s /bin/busybox  /bin/egrep
-ln -s /bin/busybox  /bin/eject
-ln -s /bin/busybox  /bin/env
-ln -s /bin/busybox  /bin/envdir
-ln -s /bin/busybox  /bin/envuidgid
-ln -s /bin/busybox  /bin/expand
-ln -s /bin/busybox  /bin/expr
-ln -s /bin/busybox  /bin/factor
-ln -s /bin/busybox  /bin/fallocate
-ln -s /bin/busybox  /bin/false
-ln -s /bin/busybox  /bin/fatattr
-ln -s /bin/busybox  /bin/fdflush
-ln -s /bin/busybox  /bin/fgconsole
-ln -s /bin/busybox  /bin/fgrep
-ln -s /bin/busybox  /bin/find
-ln -s /bin/busybox  /bin/flock
-ln -s /bin/busybox  /bin/free
-ln -s /bin/busybox  /bin/fsync
-ln -s /bin/busybox  /bin/fuser
-ln -s /bin/busybox  /bin/getopt
-ln -s /bin/busybox  /bin/grep
-ln -s /bin/busybox  /bin/groups
-ln -s /bin/busybox  /bin/gunzip
-ln -s /bin/busybox  /bin/gzip
-ln -s /bin/busybox  /bin/hd
-ln -s /bin/busybox  /bin/head
-ln -s /bin/busybox  /bin/hexdump
-ln -s /bin/busybox  /bin/hexedit
-ln -s /bin/busybox  /bin/hostname
-ln -s /bin/busybox  /bin/id
-ln -s /bin/busybox  /bin/install
-ln -s /bin/busybox  /bin/ionice
-ln -s /bin/busybox  /bin/iostat
-ln -s /bin/busybox  /bin/ipcrm
-ln -s /bin/busybox  /bin/ipcs
-ln -s /bin/busybox  /bin/kbd_mode
-ln -s /bin/busybox  /bin/kill
-ln -s /bin/busybox  /bin/killall
-ln -s /bin/busybox  /bin/last
-ln -s /bin/busybox  /bin/less
-ln -s /bin/busybox  /bin/link
-ln -s /bin/busybox  /bin/linux32
-ln -s /bin/busybox  /bin/linux64
-ln -s /bin/busybox  /bin/login
-ln -s /bin/busybox  /bin/lpq
-ln -s /bin/busybox  /bin/lpr
-ln -s /bin/busybox  /bin/ls
-ln -s /bin/busybox  /bin/lsattr
-ln -s /bin/busybox  /bin/lsof
-ln -s /bin/busybox  /bin/lspci
-ln -s /bin/busybox  /bin/lsscsi
-ln -s /bin/busybox  /bin/lsusb
-ln -s /bin/busybox  /bin/lzcat
-ln -s /bin/busybox  /bin/lzma
-ln -s /bin/busybox  /bin/lzop
-ln -s /bin/busybox  /bin/lzopcat
-ln -s /bin/busybox  /bin/man
-ln -s /bin/busybox  /bin/md5sum
-ln -s /bin/busybox  /bin/mesg
-ln -s /bin/busybox  /bin/microcom
-ln -s /bin/busybox  /bin/minips
-ln -s /bin/busybox  /bin/mkfifo
-ln -s /bin/busybox  /bin/mknod
-ln -s /bin/busybox  /bin/mkpasswd
-ln -s /bin/busybox  /bin/mktemp
-ln -s /bin/busybox  /bin/more
-ln -s /bin/busybox  /bin/mount
-ln -s /bin/busybox  /bin/mountpoint
-ln -s /bin/busybox  /bin/mpstat
-ln -s /bin/busybox  /bin/mt
-ln -s /bin/busybox  /bin/mv
-ln -s /bin/busybox  /bin/nc
-ln -s /bin/busybox  /bin/netcat
-ln -s /bin/busybox  /bin/netstat
-ln -s /bin/busybox  /bin/nice
-ln -s /bin/busybox  /bin/nl
-ln -s /bin/busybox  /bin/nmeter
-ln -s /bin/busybox  /bin/nohup
-ln -s /bin/busybox  /bin/nproc
-ln -s /bin/busybox  /bin/nsenter
-ln -s /bin/busybox  /bin/nslookup
-ln -s /bin/busybox  /bin/nuke
-ln -s /bin/busybox  /bin/openvt
-ln -s /bin/busybox  /bin/passwd
-ln -s /bin/busybox  /bin/paste
-ln -s /bin/busybox  /bin/patch
-ln -s /bin/busybox  /bin/pgrep
-ln -s /bin/busybox  /bin/pidof
-ln -s /bin/busybox  /bin/ping
-ln -s /bin/busybox  /bin/ping6
-ln -s /bin/busybox  /bin/pipe_progress
-ln -s /bin/busybox  /bin/pkill
-ln -s /bin/busybox  /bin/pmap
-ln -s /bin/busybox  /bin/printenv
-ln -s /bin/busybox  /bin/printf
-ln -s /bin/busybox  /bin/ps
-ln -s /bin/busybox  /bin/pscan
-ln -s /bin/busybox  /bin/pstree
-ln -s /bin/busybox  /bin/pwd
-ln -s /bin/busybox  /bin/pwdx
-ln -s /bin/busybox  /bin/readlink
-ln -s /bin/busybox  /bin/realpath
-ln -s /bin/busybox  /bin/renice
-ln -s /bin/busybox  /bin/reset
-ln -s /bin/busybox  /bin/resize
-ln -s /bin/busybox  /bin/resume
-ln -s /bin/busybox  /bin/rev
-ln -s /bin/busybox  /bin/rm
-ln -s /bin/busybox  /bin/rx
-ln -s /bin/busybox  /bin/script
-ln -s /bin/busybox  /bin/scriptreplay
-ln -s /bin/busybox  /bin/sed
-ln -s /bin/busybox  /bin/seq
-ln -s /bin/busybox  /bin/setarch
-ln -s /bin/busybox  /bin/setfattr
-ln -s /bin/busybox  /bin/setkeycodes
-ln -s /bin/busybox  /bin/setpriv
-ln -s /bin/busybox  /bin/setserial
-ln -s /bin/busybox  /bin/setsid
-ln -s /bin/busybox  /bin/setuidgid
-ln -s /bin/busybox  /bin/sha1sum
-ln -s /bin/busybox  /bin/sha256sum
-ln -s /bin/busybox  /bin/sha3sum
-ln -s /bin/busybox  /bin/sha512sum
-ln -s /bin/busybox  /bin/showkey
-ln -s /bin/busybox  /bin/shred
-ln -s /bin/busybox  /bin/shuf
-ln -s /bin/busybox  /bin/sleep
-ln -s /bin/busybox  /bin/softlimit
-ln -s /bin/busybox  /bin/sort
-ln -s /bin/busybox  /bin/split
-ln -s /bin/busybox  /bin/ssl_client
-ln -s /bin/busybox  /bin/stat
-ln -s /bin/busybox  /bin/strings
-ln -s /bin/busybox  /bin/stty
-ln -s /bin/busybox  /bin/su
-ln -s /bin/busybox  /bin/sum
-ln -s /bin/busybox  /bin/svc
-ln -s /bin/busybox  /bin/svok
-ln -s /bin/busybox  /bin/sync
-ln -s /bin/busybox  /bin/tac
-ln -s /bin/busybox  /bin/tail
-ln -s /bin/busybox  /bin/tar
-ln -s /bin/busybox  /bin/tee
-ln -s /bin/busybox  /bin/telnet
-ln -s /bin/busybox  /bin/test
-ln -s /bin/busybox  /bin/tftp
-ln -s /bin/busybox  /bin/time
-ln -s /bin/busybox  /bin/timeout
-ln -s /bin/busybox  /bin/top
-ln -s /bin/busybox  /bin/touch
-ln -s /bin/busybox  /bin/tr
-ln -s /bin/busybox  /bin/traceroute
-ln -s /bin/busybox  /bin/traceroute6
-ln -s /bin/busybox  /bin/true
-ln -s /bin/busybox  /bin/truncate
-ln -s /bin/busybox  /bin/ts
-ln -s /bin/busybox  /bin/tty
-ln -s /bin/busybox  /bin/ttysize
-ln -s /bin/busybox  /bin/udhcpc6
-ln -s /bin/busybox  /bin/umount
-ln -s /bin/busybox  /bin/uname
-ln -s /bin/busybox  /bin/uncompress
-ln -s /bin/busybox  /bin/unexpand
-ln -s /bin/busybox  /bin/uniq
-ln -s /bin/busybox  /bin/unit
-ln -s /bin/busybox  /bin/unix2dos
-ln -s /bin/busybox  /bin/unlink
-ln -s /bin/busybox  /bin/unlzma
-ln -s /bin/busybox  /bin/unlzop
-ln -s /bin/busybox  /bin/unshare
-ln -s /bin/busybox  /bin/unxz
-ln -s /bin/busybox  /bin/unzip
-ln -s /bin/busybox  /bin/uptime
-ln -s /bin/busybox  /bin/users
-ln -s /bin/busybox  /bin/usleep
-ln -s /bin/busybox  /bin/vi
-ln -s /bin/busybox  /bin/vlock
-ln -s /bin/busybox  /bin/volname
-ln -s /bin/busybox  /bin/w
-ln -s /bin/busybox  /bin/wall
-ln -s /bin/busybox  /bin/watch
-ln -s /bin/busybox  /bin/wc
-ln -s /bin/busybox  /bin/wget
-ln -s /bin/busybox  /bin/which
-ln -s /bin/busybox  /bin/who
-ln -s /bin/busybox  /bin/whoami
-ln -s /bin/busybox  /bin/whois
-ln -s /bin/busybox  /bin/xargs
-ln -s /bin/busybox  /bin/xxd
-ln -s /bin/busybox  /bin/xz
-ln -s /bin/busybox  /bin/xzcat
-ln -s /bin/busybox  /bin/yes
-ln -s /bin/busybox  /bin/zcat
-
-ln -s /bin/busybox  /sbin/acpid
-ln -s /bin/busybox  /sbin/addgroup
-ln -s /bin/busybox  /sbin/adduser
-ln -s /bin/busybox  /sbin/adjtimex
-ln -s /bin/busybox  /sbin/arp
-ln -s /bin/busybox  /sbin/arping
-ln -s /bin/busybox  /sbin/blkid
-ln -s /bin/busybox  /sbin/blockdev
-ln -s /bin/busybox  /sbin/brctl
-ln -s /bin/busybox  /sbin/chat
-ln -s /bin/busybox  /sbin/chpasswd
-ln -s /bin/busybox  /sbin/chroot
-ln -s /bin/busybox  /sbin/crond
-ln -s /bin/busybox  /sbin/delgroup
-ln -s /bin/busybox  /sbin/deluser
-ln -s /bin/busybox  /sbin/depmod
-ln -s /bin/busybox  /sbin/devmem
-ln -s /bin/busybox  /sbin/dhcprelay
-ln -s /bin/busybox  /sbin/ether-wake
-ln -s /bin/busybox  /sbin/fbset
-ln -s /bin/busybox  /sbin/fdformat
-ln -s /bin/busybox  /sbin/fdisk
-ln -s /bin/busybox  /sbin/findfs
-ln -s /bin/busybox  /sbin/flash_eraseall
-ln -s /bin/busybox  /sbin/flash_lock
-ln -s /bin/busybox  /sbin/flash_unlock
-ln -s /bin/busybox  /sbin/flashcp
-ln -s /bin/busybox  /sbin/freeramdisk
-ln -s /bin/busybox  /sbin/fsck
-ln -s /bin/busybox  /sbin/fsfreeze
-ln -s /bin/busybox  /sbin/fstrim
-ln -s /bin/busybox  /sbin/ftpd
-ln -s /bin/busybox  /sbin/getty
-ln -s /bin/busybox  /sbin/ginit
-ln -s /bin/busybox  /sbin/halt
-ln -s /bin/busybox  /sbin/hdparm
-ln -s /bin/busybox  /sbin/httpd
-ln -s /bin/busybox  /sbin/hwclock
-ln -s /bin/busybox  /sbin/i2cdetect
-ln -s /bin/busybox  /sbin/i2cdump
-ln -s /bin/busybox  /sbin/i2cget
-ln -s /bin/busybox  /sbin/i2cset
-ln -s /bin/busybox  /sbin/i2ctransfer
-ln -s /bin/busybox  /sbin/ifconfig
-ln -s /bin/busybox  /sbin/ifdown
-ln -s /bin/busybox  /sbin/ifenslave
-ln -s /bin/busybox  /sbin/ifplugd
-ln -s /bin/busybox  /sbin/ifup
-ln -s /bin/busybox  /sbin/init
-ln -s /bin/busybox  /sbin/insmod
-ln -s /bin/busybox  /sbin/ip
-ln -s /bin/busybox  /sbin/ipaddr
-ln -s /bin/busybox  /sbin/iplink
-ln -s /bin/busybox  /sbin/ipneigh
-ln -s /bin/busybox  /sbin/iproute
-ln -s /bin/busybox  /sbin/iprule
-ln -s /bin/busybox  /sbin/iptunnel
-ln -s /bin/busybox  /sbin/killall5
-ln -s /bin/busybox  /sbin/loadfont
-ln -s /bin/busybox  /sbin/loadkmap
-ln -s /bin/busybox  /sbin/logread
-ln -s /bin/busybox  /sbin/losetup
-ln -s /bin/busybox  /sbin/lsmod
-ln -s /bin/busybox  /sbin/makedevs
-ln -s /bin/busybox  /sbin/mdev
-ln -s /bin/busybox  /sbin/mim
-ln -s /bin/busybox  /sbin/mkdosfs
-ln -s /bin/busybox  /sbin/mke2fs
-ln -s /bin/busybox  /sbin/mkfs.ext2
-ln -s /bin/busybox  /sbin/mkfs.reiser
-ln -s /bin/busybox  /sbin/mkfs.vfat
-ln -s /bin/busybox  /sbin/mkswap
-ln -s /bin/busybox  /sbin/modinfo
-ln -s /bin/busybox  /sbin/modprobe
-ln -s /bin/busybox  /sbin/nameif
-ln -s /bin/busybox  /sbin/nanddump
-ln -s /bin/busybox  /sbin/nandwrite
-ln -s /bin/busybox  /sbin/nbd-client
-ln -s /bin/busybox  /sbin/nologin
-ln -s /bin/busybox  /sbin/ntpd
-ln -s /bin/busybox  /sbin/partprobe
-ln -s /bin/busybox  /sbin/pivot_root
-ln -s /bin/busybox  /sbin/popmaildir
-ln -s /bin/busybox  /sbin/poweroff
-ln -s /bin/busybox  /sbin/powertop
-ln -s /bin/busybox  /sbin/raidautorun
-ln -s /bin/busybox  /sbin/rdate
-ln -s /bin/busybox  /sbin/readahead
-ln -s /bin/busybox  /sbin/reboot
-ln -s /bin/busybox  /sbin/rmmod
-ln -s /bin/busybox  /sbin/route
-ln -s /bin/busybox  /sbin/rtcwake
-ln -s /bin/busybox  /sbin/run-init
-ln -s /bin/busybox  /sbin/runlevel
-ln -s /bin/busybox  /sbin/sendmail
-ln -s /bin/busybox  /sbin/setconsole
-ln -s /bin/busybox  /sbin/setfont
-ln -s /bin/busybox  /sbin/setlogcons
-ln -s /bin/busybox  /sbin/start-stop-daemon
-ln -s /bin/busybox  /sbin/swapoff
-ln -s /bin/busybox  /sbin/swapon
-ln -s /bin/busybox  /sbin/switch_root
-ln -s /bin/busybox  /sbin/sysctl
-ln -s /bin/busybox  /sbin/tc
-ln -s /bin/busybox  /sbin/telnetd
-ln -s /bin/busybox  /sbin/tftpd
-ln -s /bin/busybox  /sbin/tunctl
-ln -s /bin/busybox  /sbin/tune2fs
-ln -s /bin/busybox  /sbin/ubiattach
-ln -s /bin/busybox  /sbin/ubidetach
-ln -s /bin/busybox  /sbin/ubimkvol
-ln -s /bin/busybox  /sbin/ubirename
-ln -s /bin/busybox  /sbin/ubirmvol
-ln -s /bin/busybox  /sbin/ubirsvol
-ln -s /bin/busybox  /sbin/ubiupdatevol
-ln -s /bin/busybox  /sbin/udhcpc
-ln -s /bin/busybox  /sbin/udhcpd
-ln -s /bin/busybox  /sbin/uevent
-ln -s /bin/busybox  /sbin/vconfig
-ln -s /bin/busybox  /sbin/watchdog
-ln -s /bin/busybox  /sbin/zcip
+/bin/busybox ln -s /bin/busybox  /bin/[
+/bin/busybox ln -s /bin/busybox  /bin/[[
+/bin/busybox ln -s /bin/busybox  /bin/ar
+/bin/busybox ln -s /bin/busybox  /bin/arch
+/bin/busybox ln -s /bin/busybox  /bin/ash
+/bin/busybox ln -s /bin/busybox  /bin/awk
+/bin/busybox ln -s /bin/busybox  /bin/base64
+/bin/busybox ln -s /bin/busybox  /bin/basename
+/bin/busybox ln -s /bin/busybox  /bin/bb
+/bin/busybox ln -s /bin/busybox  /bin/bbconfig
+/bin/busybox ln -s /bin/busybox  /bin/bbsh
+/bin/busybox ln -s /bin/busybox  /bin/bc
+/bin/busybox ln -s /bin/busybox  /bin/blkdiscard
+/bin/busybox ln -s /bin/busybox  /bin/bunzip2
+/bin/busybox ln -s /bin/busybox  /bin/bzcat
+/bin/busybox ln -s /bin/busybox  /bin/bzip2
+/bin/busybox ln -s /bin/busybox  /bin/cal
+/bin/busybox ln -s /bin/busybox  /bin/cat
+/bin/busybox ln -s /bin/busybox  /bin/chattr
+/bin/busybox ln -s /bin/busybox  /bin/chgrp
+/bin/busybox ln -s /bin/busybox  /bin/chmod
+/bin/busybox ln -s /bin/busybox  /bin/chown
+/bin/busybox ln -s /bin/busybox  /bin/chpst
+/bin/busybox ln -s /bin/busybox  /bin/chrt
+/bin/busybox ln -s /bin/busybox  /bin/chvt
+/bin/busybox ln -s /bin/busybox  /bin/cksum
+/bin/busybox ln -s /bin/busybox  /bin/clear
+/bin/busybox ln -s /bin/busybox  /bin/cmp
+/bin/busybox ln -s /bin/busybox  /bin/comm
+/bin/busybox ln -s /bin/busybox  /bin/conspy
+/bin/busybox ln -s /bin/busybox  /bin/cp
+/bin/busybox ln -s /bin/busybox  /bin/cpio
+/bin/busybox ln -s /bin/busybox  /bin/cryptpw
+/bin/busybox ln -s /bin/busybox  /bin/cttyhack
+/bin/busybox ln -s /bin/busybox  /bin/cut
+/bin/busybox ln -s /bin/busybox  /bin/date
+/bin/busybox ln -s /bin/busybox  /bin/dd
+/bin/busybox ln -s /bin/busybox  /bin/deallocvt
+/bin/busybox ln -s /bin/busybox  /bin/df
+/bin/busybox ln -s /bin/busybox  /bin/diff
+/bin/busybox ln -s /bin/busybox  /bin/dirname
+/bin/busybox ln -s /bin/busybox  /bin/dmesg
+/bin/busybox ln -s /bin/busybox  /bin/dnsdomainname
+/bin/busybox ln -s /bin/busybox  /bin/dos2unix
+/bin/busybox ln -s /bin/busybox  /bin/du
+/bin/busybox ln -s /bin/busybox  /bin/dumpkmap
+/bin/busybox ln -s /bin/busybox  /bin/dumpleases
+/bin/busybox ln -s /bin/busybox  /bin/echo
+/bin/busybox ln -s /bin/busybox  /bin/ed
+/bin/busybox ln -s /bin/busybox  /bin/egrep
+/bin/busybox ln -s /bin/busybox  /bin/eject
+/bin/busybox ln -s /bin/busybox  /bin/env
+/bin/busybox ln -s /bin/busybox  /bin/envdir
+/bin/busybox ln -s /bin/busybox  /bin/envuidgid
+/bin/busybox ln -s /bin/busybox  /bin/expand
+/bin/busybox ln -s /bin/busybox  /bin/expr
+/bin/busybox ln -s /bin/busybox  /bin/factor
+/bin/busybox ln -s /bin/busybox  /bin/fallocate
+/bin/busybox ln -s /bin/busybox  /bin/false
+/bin/busybox ln -s /bin/busybox  /bin/fatattr
+/bin/busybox ln -s /bin/busybox  /bin/fdflush
+/bin/busybox ln -s /bin/busybox  /bin/fgconsole
+/bin/busybox ln -s /bin/busybox  /bin/fgrep
+/bin/busybox ln -s /bin/busybox  /bin/find
+/bin/busybox ln -s /bin/busybox  /bin/flock
+/bin/busybox ln -s /bin/busybox  /bin/free
+/bin/busybox ln -s /bin/busybox  /bin/fsync
+/bin/busybox ln -s /bin/busybox  /bin/fuser
+/bin/busybox ln -s /bin/busybox  /bin/getopt
+/bin/busybox ln -s /bin/busybox  /bin/grep
+/bin/busybox ln -s /bin/busybox  /bin/groups
+/bin/busybox ln -s /bin/busybox  /bin/gunzip
+/bin/busybox ln -s /bin/busybox  /bin/gzip
+/bin/busybox ln -s /bin/busybox  /bin/hd
+/bin/busybox ln -s /bin/busybox  /bin/head
+/bin/busybox ln -s /bin/busybox  /bin/hexdump
+/bin/busybox ln -s /bin/busybox  /bin/hexedit
+/bin/busybox ln -s /bin/busybox  /bin/hostname
+/bin/busybox ln -s /bin/busybox  /bin/id
+/bin/busybox ln -s /bin/busybox  /bin/install
+/bin/busybox ln -s /bin/busybox  /bin/ionice
+/bin/busybox ln -s /bin/busybox  /bin/iostat
+/bin/busybox ln -s /bin/busybox  /bin/ipcrm
+/bin/busybox ln -s /bin/busybox  /bin/ipcs
+/bin/busybox ln -s /bin/busybox  /bin/kbd_mode
+/bin/busybox ln -s /bin/busybox  /bin/kill
+/bin/busybox ln -s /bin/busybox  /bin/killall
+/bin/busybox ln -s /bin/busybox  /bin/last
+/bin/busybox ln -s /bin/busybox  /bin/less
+/bin/busybox ln -s /bin/busybox  /bin/link
+/bin/busybox ln -s /bin/busybox  /bin/linux32
+/bin/busybox ln -s /bin/busybox  /bin/linux64
+/bin/busybox ln -s /bin/busybox  /bin/login
+/bin/busybox ln -s /bin/busybox  /bin/lpq
+/bin/busybox ln -s /bin/busybox  /bin/lpr
+/bin/busybox ln -s /bin/busybox  /bin/ls
+/bin/busybox ln -s /bin/busybox  /bin/lsattr
+/bin/busybox ln -s /bin/busybox  /bin/lsof
+/bin/busybox ln -s /bin/busybox  /bin/lspci
+/bin/busybox ln -s /bin/busybox  /bin/lsscsi
+/bin/busybox ln -s /bin/busybox  /bin/lsusb
+/bin/busybox ln -s /bin/busybox  /bin/lzcat
+/bin/busybox ln -s /bin/busybox  /bin/lzma
+/bin/busybox ln -s /bin/busybox  /bin/lzop
+/bin/busybox ln -s /bin/busybox  /bin/lzopcat
+/bin/busybox ln -s /bin/busybox  /bin/man
+/bin/busybox ln -s /bin/busybox  /bin/md5sum
+/bin/busybox ln -s /bin/busybox  /bin/mesg
+/bin/busybox ln -s /bin/busybox  /bin/microcom
+/bin/busybox ln -s /bin/busybox  /bin/minips
+/bin/busybox ln -s /bin/busybox  /bin/mkfifo
+/bin/busybox ln -s /bin/busybox  /bin/mknod
+/bin/busybox ln -s /bin/busybox  /bin/mkpasswd
+/bin/busybox ln -s /bin/busybox  /bin/mktemp
+/bin/busybox ln -s /bin/busybox  /bin/more
+/bin/busybox ln -s /bin/busybox  /bin/mount
+/bin/busybox ln -s /bin/busybox  /bin/mountpoint
+/bin/busybox ln -s /bin/busybox  /bin/mpstat
+/bin/busybox ln -s /bin/busybox  /bin/mt
+/bin/busybox ln -s /bin/busybox  /bin/mv
+/bin/busybox ln -s /bin/busybox  /bin/nc
+/bin/busybox ln -s /bin/busybox  /bin/netcat
+/bin/busybox ln -s /bin/busybox  /bin/netstat
+/bin/busybox ln -s /bin/busybox  /bin/nice
+/bin/busybox ln -s /bin/busybox  /bin/nl
+/bin/busybox ln -s /bin/busybox  /bin/nmeter
+/bin/busybox ln -s /bin/busybox  /bin/nohup
+/bin/busybox ln -s /bin/busybox  /bin/nproc
+/bin/busybox ln -s /bin/busybox  /bin/nsenter
+/bin/busybox ln -s /bin/busybox  /bin/nslookup
+/bin/busybox ln -s /bin/busybox  /bin/nuke
+/bin/busybox ln -s /bin/busybox  /bin/openvt
+/bin/busybox ln -s /bin/busybox  /bin/passwd
+/bin/busybox ln -s /bin/busybox  /bin/paste
+/bin/busybox ln -s /bin/busybox  /bin/patch
+/bin/busybox ln -s /bin/busybox  /bin/pgrep
+/bin/busybox ln -s /bin/busybox  /bin/pidof
+/bin/busybox ln -s /bin/busybox  /bin/ping
+/bin/busybox ln -s /bin/busybox  /bin/ping6
+/bin/busybox ln -s /bin/busybox  /bin/pipe_progress
+/bin/busybox ln -s /bin/busybox  /bin/pkill
+/bin/busybox ln -s /bin/busybox  /bin/pmap
+/bin/busybox ln -s /bin/busybox  /bin/printenv
+/bin/busybox ln -s /bin/busybox  /bin/printf
+/bin/busybox ln -s /bin/busybox  /bin/ps
+/bin/busybox ln -s /bin/busybox  /bin/pscan
+/bin/busybox ln -s /bin/busybox  /bin/pstree
+/bin/busybox ln -s /bin/busybox  /bin/pwd
+/bin/busybox ln -s /bin/busybox  /bin/pwdx
+/bin/busybox ln -s /bin/busybox  /bin/readlink
+/bin/busybox ln -s /bin/busybox  /bin/realpath
+/bin/busybox ln -s /bin/busybox  /bin/renice
+/bin/busybox ln -s /bin/busybox  /bin/reset
+/bin/busybox ln -s /bin/busybox  /bin/resize
+/bin/busybox ln -s /bin/busybox  /bin/resume
+/bin/busybox ln -s /bin/busybox  /bin/rev
+/bin/busybox ln -s /bin/busybox  /bin/rm
+/bin/busybox ln -s /bin/busybox  /bin/rx
+/bin/busybox ln -s /bin/busybox  /bin/script
+/bin/busybox ln -s /bin/busybox  /bin/scriptreplay
+/bin/busybox ln -s /bin/busybox  /bin/sed
+/bin/busybox ln -s /bin/busybox  /bin/seq
+/bin/busybox ln -s /bin/busybox  /bin/setarch
+/bin/busybox ln -s /bin/busybox  /bin/setfattr
+/bin/busybox ln -s /bin/busybox  /bin/setkeycodes
+/bin/busybox ln -s /bin/busybox  /bin/setpriv
+/bin/busybox ln -s /bin/busybox  /bin/setserial
+/bin/busybox ln -s /bin/busybox  /bin/setsid
+/bin/busybox ln -s /bin/busybox  /bin/setuidgid
+/bin/busybox ln -s /bin/busybox  /bin/sha1sum
+/bin/busybox ln -s /bin/busybox  /bin/sha256sum
+/bin/busybox ln -s /bin/busybox  /bin/sha3sum
+/bin/busybox ln -s /bin/busybox  /bin/sha512sum
+/bin/busybox ln -s /bin/busybox  /bin/showkey
+/bin/busybox ln -s /bin/busybox  /bin/shred
+/bin/busybox ln -s /bin/busybox  /bin/shuf
+/bin/busybox ln -s /bin/busybox  /bin/sleep
+/bin/busybox ln -s /bin/busybox  /bin/softlimit
+/bin/busybox ln -s /bin/busybox  /bin/sort
+/bin/busybox ln -s /bin/busybox  /bin/split
+/bin/busybox ln -s /bin/busybox  /bin/ssl_client
+/bin/busybox ln -s /bin/busybox  /bin/stat
+/bin/busybox ln -s /bin/busybox  /bin/strings
+/bin/busybox ln -s /bin/busybox  /bin/stty
+/bin/busybox ln -s /bin/busybox  /bin/su
+/bin/busybox ln -s /bin/busybox  /bin/sum
+/bin/busybox ln -s /bin/busybox  /bin/svc
+/bin/busybox ln -s /bin/busybox  /bin/svok
+/bin/busybox ln -s /bin/busybox  /bin/sync
+/bin/busybox ln -s /bin/busybox  /bin/tac
+/bin/busybox ln -s /bin/busybox  /bin/tail
+/bin/busybox ln -s /bin/busybox  /bin/tar
+/bin/busybox ln -s /bin/busybox  /bin/tee
+/bin/busybox ln -s /bin/busybox  /bin/telnet
+/bin/busybox ln -s /bin/busybox  /bin/test
+/bin/busybox ln -s /bin/busybox  /bin/tftp
+/bin/busybox ln -s /bin/busybox  /bin/time
+/bin/busybox ln -s /bin/busybox  /bin/timeout
+/bin/busybox ln -s /bin/busybox  /bin/top
+/bin/busybox ln -s /bin/busybox  /bin/touch
+/bin/busybox ln -s /bin/busybox  /bin/tr
+/bin/busybox ln -s /bin/busybox  /bin/traceroute
+/bin/busybox ln -s /bin/busybox  /bin/traceroute6
+/bin/busybox ln -s /bin/busybox  /bin/true
+/bin/busybox ln -s /bin/busybox  /bin/truncate
+/bin/busybox ln -s /bin/busybox  /bin/ts
+/bin/busybox ln -s /bin/busybox  /bin/tty
+/bin/busybox ln -s /bin/busybox  /bin/ttysize
+/bin/busybox ln -s /bin/busybox  /bin/udhcpc6
+/bin/busybox ln -s /bin/busybox  /bin/umount
+/bin/busybox ln -s /bin/busybox  /bin/uname
+/bin/busybox ln -s /bin/busybox  /bin/uncompress
+/bin/busybox ln -s /bin/busybox  /bin/unexpand
+/bin/busybox ln -s /bin/busybox  /bin/uniq
+/bin/busybox ln -s /bin/busybox  /bin/unit
+/bin/busybox ln -s /bin/busybox  /bin/unix2dos
+/bin/busybox ln -s /bin/busybox  /bin/unlink
+/bin/busybox ln -s /bin/busybox  /bin/unlzma
+/bin/busybox ln -s /bin/busybox  /bin/unlzop
+/bin/busybox ln -s /bin/busybox  /bin/unshare
+/bin/busybox ln -s /bin/busybox  /bin/unxz
+/bin/busybox ln -s /bin/busybox  /bin/unzip
+/bin/busybox ln -s /bin/busybox  /bin/uptime
+/bin/busybox ln -s /bin/busybox  /bin/users
+/bin/busybox ln -s /bin/busybox  /bin/usleep
+/bin/busybox ln -s /bin/busybox  /bin/vi
+/bin/busybox ln -s /bin/busybox  /bin/vlock
+/bin/busybox ln -s /bin/busybox  /bin/volname
+/bin/busybox ln -s /bin/busybox  /bin/w
+/bin/busybox ln -s /bin/busybox  /bin/wall
+/bin/busybox ln -s /bin/busybox  /bin/watch
+/bin/busybox ln -s /bin/busybox  /bin/wc
+/bin/busybox ln -s /bin/busybox  /bin/wget
+/bin/busybox ln -s /bin/busybox  /bin/which
+/bin/busybox ln -s /bin/busybox  /bin/who
+/bin/busybox ln -s /bin/busybox  /bin/whoami
+/bin/busybox ln -s /bin/busybox  /bin/whois
+/bin/busybox ln -s /bin/busybox  /bin/xargs
+/bin/busybox ln -s /bin/busybox  /bin/xxd
+/bin/busybox ln -s /bin/busybox  /bin/xz
+/bin/busybox ln -s /bin/busybox  /bin/xzcat
+/bin/busybox ln -s /bin/busybox  /bin/yes
+/bin/busybox ln -s /bin/busybox  /bin/zcat
+/bin/busybox ln -s /bin/busybox  /sbin/acpid
+/bin/busybox ln -s /bin/busybox  /sbin/addgroup
+/bin/busybox ln -s /bin/busybox  /sbin/adduser
+/bin/busybox ln -s /bin/busybox  /sbin/adjtimex
+/bin/busybox ln -s /bin/busybox  /sbin/arp
+/bin/busybox ln -s /bin/busybox  /sbin/arping
+/bin/busybox ln -s /bin/busybox  /sbin/blkid
+/bin/busybox ln -s /bin/busybox  /sbin/blockdev
+/bin/busybox ln -s /bin/busybox  /sbin/brctl
+/bin/busybox ln -s /bin/busybox  /sbin/chat
+/bin/busybox ln -s /bin/busybox  /sbin/chpasswd
+/bin/busybox ln -s /bin/busybox  /sbin/chroot
+/bin/busybox ln -s /bin/busybox  /sbin/crond
+/bin/busybox ln -s /bin/busybox  /sbin/delgroup
+/bin/busybox ln -s /bin/busybox  /sbin/deluser
+/bin/busybox ln -s /bin/busybox  /sbin/depmod
+/bin/busybox ln -s /bin/busybox  /sbin/devmem
+/bin/busybox ln -s /bin/busybox  /sbin/dhcprelay
+/bin/busybox ln -s /bin/busybox  /sbin/ether-wake
+/bin/busybox ln -s /bin/busybox  /sbin/fbset
+/bin/busybox ln -s /bin/busybox  /sbin/fdformat
+/bin/busybox ln -s /bin/busybox  /sbin/fdisk
+/bin/busybox ln -s /bin/busybox  /sbin/findfs
+/bin/busybox ln -s /bin/busybox  /sbin/flash_eraseall
+/bin/busybox ln -s /bin/busybox  /sbin/flash_lock
+/bin/busybox ln -s /bin/busybox  /sbin/flash_unlock
+/bin/busybox ln -s /bin/busybox  /sbin/flashcp
+/bin/busybox ln -s /bin/busybox  /sbin/freeramdisk
+/bin/busybox ln -s /bin/busybox  /sbin/fsck
+/bin/busybox ln -s /bin/busybox  /sbin/fsfreeze
+/bin/busybox ln -s /bin/busybox  /sbin/fstrim
+/bin/busybox ln -s /bin/busybox  /sbin/ftpd
+/bin/busybox ln -s /bin/busybox  /sbin/getty
+/bin/busybox ln -s /bin/busybox  /sbin/ginit
+/bin/busybox ln -s /bin/busybox  /sbin/halt
+/bin/busybox ln -s /bin/busybox  /sbin/hdparm
+/bin/busybox ln -s /bin/busybox  /sbin/httpd
+/bin/busybox ln -s /bin/busybox  /sbin/hwclock
+/bin/busybox ln -s /bin/busybox  /sbin/i2cdetect
+/bin/busybox ln -s /bin/busybox  /sbin/i2cdump
+/bin/busybox ln -s /bin/busybox  /sbin/i2cget
+/bin/busybox ln -s /bin/busybox  /sbin/i2cset
+/bin/busybox ln -s /bin/busybox  /sbin/i2ctransfer
+/bin/busybox ln -s /bin/busybox  /sbin/ifconfig
+/bin/busybox ln -s /bin/busybox  /sbin/ifdown
+/bin/busybox ln -s /bin/busybox  /sbin/ifenslave
+/bin/busybox ln -s /bin/busybox  /sbin/ifplugd
+/bin/busybox ln -s /bin/busybox  /sbin/ifup
+/bin/busybox ln -s /bin/busybox  /sbin/init
+/bin/busybox ln -s /bin/busybox  /sbin/insmod
+/bin/busybox ln -s /bin/busybox  /sbin/ip
+/bin/busybox ln -s /bin/busybox  /sbin/ipaddr
+/bin/busybox ln -s /bin/busybox  /sbin/iplink
+/bin/busybox ln -s /bin/busybox  /sbin/ipneigh
+/bin/busybox ln -s /bin/busybox  /sbin/iproute
+/bin/busybox ln -s /bin/busybox  /sbin/iprule
+/bin/busybox ln -s /bin/busybox  /sbin/iptunnel
+/bin/busybox ln -s /bin/busybox  /sbin/killall5
+/bin/busybox ln -s /bin/busybox  /sbin/loadfont
+/bin/busybox ln -s /bin/busybox  /sbin/loadkmap
+/bin/busybox ln -s /bin/busybox  /sbin/logread
+/bin/busybox ln -s /bin/busybox  /sbin/losetup
+/bin/busybox ln -s /bin/busybox  /sbin/lsmod
+/bin/busybox ln -s /bin/busybox  /sbin/makedevs
+/bin/busybox ln -s /bin/busybox  /sbin/mdev
+/bin/busybox ln -s /bin/busybox  /sbin/mim
+/bin/busybox ln -s /bin/busybox  /sbin/mkdosfs
+/bin/busybox ln -s /bin/busybox  /sbin/mke2fs
+/bin/busybox ln -s /bin/busybox  /sbin/mkfs.ext2
+/bin/busybox ln -s /bin/busybox  /sbin/mkfs.reiser
+/bin/busybox ln -s /bin/busybox  /sbin/mkfs.vfat
+/bin/busybox ln -s /bin/busybox  /sbin/mkswap
+/bin/busybox ln -s /bin/busybox  /sbin/modinfo
+/bin/busybox ln -s /bin/busybox  /sbin/modprobe
+/bin/busybox ln -s /bin/busybox  /sbin/nameif
+/bin/busybox ln -s /bin/busybox  /sbin/nanddump
+/bin/busybox ln -s /bin/busybox  /sbin/nandwrite
+/bin/busybox ln -s /bin/busybox  /sbin/nbd-client
+/bin/busybox ln -s /bin/busybox  /sbin/nologin
+/bin/busybox ln -s /bin/busybox  /sbin/ntpd
+/bin/busybox ln -s /bin/busybox  /sbin/partprobe
+/bin/busybox ln -s /bin/busybox  /sbin/pivot_root
+/bin/busybox ln -s /bin/busybox  /sbin/popmaildir
+/bin/busybox ln -s /bin/busybox  /sbin/poweroff
+/bin/busybox ln -s /bin/busybox  /sbin/powertop
+/bin/busybox ln -s /bin/busybox  /sbin/raidautorun
+/bin/busybox ln -s /bin/busybox  /sbin/rdate
+/bin/busybox ln -s /bin/busybox  /sbin/readahead
+/bin/busybox ln -s /bin/busybox  /sbin/reboot
+/bin/busybox ln -s /bin/busybox  /sbin/rmmod
+/bin/busybox ln -s /bin/busybox  /sbin/route
+/bin/busybox ln -s /bin/busybox  /sbin/rtcwake
+/bin/busybox ln -s /bin/busybox  /sbin/run-init
+/bin/busybox ln -s /bin/busybox  /sbin/runlevel
+/bin/busybox ln -s /bin/busybox  /sbin/sendmail
+/bin/busybox ln -s /bin/busybox  /sbin/setconsole
+/bin/busybox ln -s /bin/busybox  /sbin/setfont
+/bin/busybox ln -s /bin/busybox  /sbin/setlogcons
+/bin/busybox ln -s /bin/busybox  /sbin/sh
+/bin/busybox ln -s /bin/busybox  /sbin/start-stop-daemon
+/bin/busybox ln -s /bin/busybox  /sbin/swapoff
+/bin/busybox ln -s /bin/busybox  /sbin/swapon
+/bin/busybox ln -s /bin/busybox  /sbin/switch_root
+/bin/busybox ln -s /bin/busybox  /sbin/sysctl
+/bin/busybox ln -s /bin/busybox  /sbin/tc
+/bin/busybox ln -s /bin/busybox  /sbin/telnetd
+/bin/busybox ln -s /bin/busybox  /sbin/tftpd
+/bin/busybox ln -s /bin/busybox  /sbin/tunctl
+/bin/busybox ln -s /bin/busybox  /sbin/tune2fs
+/bin/busybox ln -s /bin/busybox  /sbin/ubiattach
+/bin/busybox ln -s /bin/busybox  /sbin/ubidetach
+/bin/busybox ln -s /bin/busybox  /sbin/ubimkvol
+/bin/busybox ln -s /bin/busybox  /sbin/ubirename
+/bin/busybox ln -s /bin/busybox  /sbin/ubirmvol
+/bin/busybox ln -s /bin/busybox  /sbin/ubirsvol
+/bin/busybox ln -s /bin/busybox  /sbin/ubiupdatevol
+/bin/busybox ln -s /bin/busybox  /sbin/udhcpc
+/bin/busybox ln -s /bin/busybox  /sbin/udhcpd
+/bin/busybox ln -s /bin/busybox  /sbin/uevent
+/bin/busybox ln -s /bin/busybox  /sbin/vconfig
+/bin/busybox ln -s /bin/busybox  /sbin/watchdog
+/bin/busybox ln -s /bin/busybox  /sbin/zcip
 
