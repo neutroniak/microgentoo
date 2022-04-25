@@ -1,9 +1,0 @@
-FROM gentoo-container-base
-
-COPY /etc/ssh/moduli /etc/ssh/
-COPY /etc/ssh/ssh_config /etc/ssh/
-
-COPY /usr/bin/ssh /usr/bin/
-COPY /usr/bin/scp /usr/bin/
-COPY /usr/bin/sftp /usr/bin/
-
