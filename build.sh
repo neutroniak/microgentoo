@@ -59,6 +59,8 @@ function gentoo_container_base() {
 	buildah copy $CONTAINER /usr/sbin/groupadd /usr/sbin/
 
 	# etc
+	buildah copy $CONTAINER passwd /etc/
+	buildah copy $CONTAINER group /etc/
 	buildah copy $CONTAINER /etc/ld.so.conf /etc/
 	buildah copy $CONTAINER /etc/ssl/ /etc/ssl/
 	buildah copy $CONTAINER /etc/env.d/ /etc/env.d/
