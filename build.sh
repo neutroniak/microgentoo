@@ -60,9 +60,9 @@ function gentoo_container_base() {
 
 	# etc
 	buildah copy $CONTAINER /etc/ld.so.conf /etc/
-	buildah copy $CONTAINER /etc/ssl/* /etc/ssl/
-	buildah copy $CONTAINER /etc/env.d/* /etc/env.d/
-	buildah copy $CONTAINER /etc/environment.d/* /etc/environment.d/
+	buildah copy $CONTAINER /etc/ssl/ /etc/ssl/
+	buildah copy $CONTAINER /etc/env.d/ /etc/env.d/
+	buildah copy $CONTAINER /etc/environment.d/ /etc/environment.d/
 	buildah copy $CONTAINER /etc/ca-certificates.conf /etc/
 	buildah copy $CONTAINER /etc/services /etc/
 	buildah copy $CONTAINER /etc/protocols /etc/
@@ -80,7 +80,7 @@ function gentoo_container_base() {
 	else
 		buildah copy $CONTAINER /etc/nsswitch.conf /etc/
 		buildah copy $CONTAINER /etc/ld.so.cache /etc/
-		buildah copy $CONTAINER /etc/ld.so.conf.d/* /etc/ld.so.conf.d/
+		buildah copy $CONTAINER /etc/ld.so.conf.d/ /etc/ld.so.conf.d/
 		buildah copy $CONTAINER /${BASELIB}/libc.so.6 /${BASELIB}/
 		buildah copy $CONTAINER /${BASELIB}/ld-linux-x86-64.so.2 /${BASELIB}/
 		buildah copy $CONTAINER /${BASELIB}/libm.so.6 /${BASELIB}/
@@ -116,7 +116,7 @@ function gentoo_container_base() {
 	buildah run $CONTAINER -- /bin/ln -s /usr/${BASELIB}/libssl.so.1.1 /usr/${BASELIB}/libssl.so
 
 	# other
-	buildah copy $CONTAINER /usr/share/ca-certificates/* /usr/share/ca-certificates/
+	buildah copy $CONTAINER /usr/share/ca-certificates/ /usr/share/ca-certificates/
 	buildah run $CONTAINER -- mkdir /{var,tmp,var/empty,sbin,/usr/bin}
 	buildah run $CONTAINER -- chmod 777 /tmp
 
@@ -140,7 +140,7 @@ gentoo_container_python() {
 	buildah copy $CONTAINER /usr/bin/python-exec2c /usr/bin/
 	buildah copy $CONTAINER /usr/bin/python${PYTHON_VERSION}-config /usr/bin/
 	buildah copy $CONTAINER /usr/lib/python-exec/python-exec2 /usr/lib/python-exec/
-	buildah copy $CONTAINER /etc/python-exec/* /etc/python-exec/
+	buildah copy $CONTAINER /etc/python-exec/ /etc/python-exec/
 	
 	buildah copy $CONTAINER /usr/${BASELIB}/libexpat.so.1 /usr/${BASELIB}/
 	buildah copy $CONTAINER /usr/${BASELIB}/libffi.so.7 /usr/${BASELIB}/
