@@ -75,7 +75,6 @@ function gentoo_container_base() {
 	buildah copy $CONTAINER /etc/profile.env /etc/
 
 	if [ "${CHOST}" == "x86_64-gentoo-linux-musl" ]; then
-		
 		buildah copy $CONTAINER /usr/${BASELIB}/libc.so /usr/${BASELIB}/
 		buildah copy $CONTAINER /${BASELIB}/ld-musl-x86_64.so.1 /${BASELIB}/
 		buildah copy $CONTAINER /etc/ld-musl-x86_64.path /etc/
@@ -128,7 +127,7 @@ function gentoo_container_base() {
 
 ############# python ################
 gentoo_container_python() {
-	
+
 	_print_header "python"
 	
 	CONTAINER=$(buildah from gentoo-container-base)
@@ -170,6 +169,8 @@ gentoo_container_openssh_client() {
 
 	export SSH_VERSION=$(equery list "*openssh*"|line 2 |awk -F '/' '{print $2}'|sed 's/openssh-//g'|sed 's/_.*.$//g'| awk -F "." '{print $1"."$2.".y"}')
 
+	_copy_ldd $CONTAINER /usr/sbin/sshd
+
 	buildah copy $CONTAINER  /etc/ssh/moduli /etc/ssh/
 	buildah copy $CONTAINER /etc/ssh/ssh_config /etc/ssh/
 
@@ -192,7 +193,7 @@ gentoo_container_nginx() {
 
 	export NGINX_VERSION=$(nginx -v 2>/dev/stdout|line 1|awk -F '/' '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
 
-	buildah copy $CONTAINER /${BASELIB}/libpcre.so.1 /${BASELIB}/
+	_copy_ldd $CONTAINER /usr/sbin/nginx
 	buildah copy $CONTAINER /usr/sbin/nginx /usr/sbin/
 	buildah copy $CONTAINER /etc/nginx/ /etc/nginx/
 	buildah copy $CONTAINER /var/www/ /var/www/
