@@ -144,7 +144,7 @@ gentoo_container_python() {
 	buildah copy $CONTAINER /etc/python-exec/ /etc/python-exec/
 	
 	buildah copy $CONTAINER /usr/${BASELIB}/libexpat.so.1 /usr/${BASELIB}/
-	buildah copy $CONTAINER /usr/${BASELIB}/libffi.so.7 /usr/${BASELIB}/
+	buildah copy $CONTAINER /usr/${BASELIB}/libffi.so.8 /usr/${BASELIB}/
 	
 	buildah run $CONTAINER -- sh -c 'cd /usr/bin && ln -s python-exec2c python'
 	buildah run $CONTAINER -- sh -c 'cd /usr/bin && ln -s python-exec2c python3'
