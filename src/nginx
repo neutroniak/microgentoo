@@ -1,0 +1,30 @@
+#!/bin/sh
+
+############# nginx #################
+gentoo_container_nginx() {
+
+	_print_header "nginx"
+
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export NGINX_VERSION=$(nginx -v 2>/dev/stdout|line 1|awk -F '/' '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
+
+	_copy_ldd $CONTAINER /usr/sbin/nginx
+	buildah copy $CONTAINER $ROOTDIR/usr/sbin/nginx /usr/sbin/
+	buildah copy $CONTAINER $ROOTDIR/etc/nginx/ /etc/nginx/
+	buildah copy $CONTAINER $ROOTDIR/var/www/ /var/www/
+
+	buildah run $CONTAINER -- mkdir -p /var/log/nginx
+	buildah run $CONTAINER -- mkdir -p /var/lib/nginx/tmp
+
+	buildah run $CONTAINER -- groupadd nginx
+	buildah run $CONTAINER -- useradd -r -d /var/lib/nginx -G nginx -s /sbin/nologin nginx
+
+	buildah run $CONTAINER -- chown -R nginx:nginx /var/log/nginx
+	buildah run $CONTAINER -- chown -R nginx:nginx /var/lib/nginx
+	
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-nginx:${NGINX_VERSION}
+	buildah rm $CONTAINER
+}

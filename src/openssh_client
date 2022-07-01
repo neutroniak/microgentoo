@@ -1,0 +1,27 @@
+#!/bin/sh
+
+############# openssh client ########
+gentoo_container_openssh_client() {
+
+	_print_header "openssh client"
+
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export SSH_VERSION=$(equery list "*openssh*"|line 2 |awk -F '/' '{print $2}'|sed 's/openssh-//g'|sed 's/_.*.$//g'| awk -F "." '{print $1"."$2.".y"}')
+
+	_copy_ldd $CONTAINER /usr/sbin/sshd
+
+	buildah copy $CONTAINER $ROOTDIR/etc/ssh/moduli /etc/ssh/
+	buildah copy $CONTAINER $ROOTDIR/etc/ssh/ssh_config /etc/ssh/
+
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/ssh /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/scp /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/sftp /usr/bin/
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-openssh-client:${SSH_VERSION}
+	buildah rm $CONTAINER
+}
+
+

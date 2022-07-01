@@ -1,0 +1,36 @@
+#!/bin/sh
+
+############# git ###################
+gentoo_container_git() {
+
+	_print_header "git"
+
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export GIT_VERSION=$(git --version|awk '{print $3}' |awk -F "." '{print $1"."$2.".y"}' )
+
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/git-upload-pack /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/git-upload-archive /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/git-receive-pack /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/import-tars /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/git /usr/bin/ 
+
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-verify-tag /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-verify-pack /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-verify-commit /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-var /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-pull /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-fetch /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-clone /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-checkout /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-branch /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git /usr/libexec/git-core/
+	buildah copy $CONTAINER $ROOTDIR/usr/libexec/git-core/git-http-fetch /usr/libexec/git-core/
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-git:${GIT_VERSION}
+	buildah rm $CONTAINER
+}
+
+

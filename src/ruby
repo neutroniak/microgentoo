@@ -1,0 +1,36 @@
+#!/bin/sh
+
+############# ruby ##################
+gentoo_container_ruby() {
+
+	_print_header "ruby"
+
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export RUBY_VERSION=$(ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2}')
+	export RUBY_VERSION_NUM=${RUBY_VERSION/\./}
+	export RUBY_VERSION_LABEL=$(ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/bundle /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/bundler /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/rake /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/racc /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/gem${RUBY_VERSION_NUM} /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/irb${RUBY_VERSION_NUM} /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/erb${RUBY_VERSION_NUM} /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/ruby${RUBY_VERSION_NUM} /usr/bin/
+
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/ruby/ /usr/${BASELIB}/ruby/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libruby${RUBY_VERSION_NUM}.so.${RUBY_VERSION} /usr/${BASELIB}/
+
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ruby${RUBY_VERSION_NUM} ruby"
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s irb${RUBY_VERSION_NUM} irb"
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s gem${RUBY_VERSION_NUM} gem"
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s erb${RUBY_VERSION_NUM} erb"
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-ruby:${RUBY_VERSION_LABEL}
+	buildah rm $CONTAINER
+}
+
+

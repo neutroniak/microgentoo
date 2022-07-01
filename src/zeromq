@@ -1,0 +1,22 @@
+#!/bin/sh
+
+############# zeromq ############
+gentoo_container_zeromq() {
+
+	_print_header "zeromq"
+	
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export ZEROMQ_VERSION_LABEL=$(equery list "*zeromq*"|line 2 |awk -F '/' '{print $2}'|sed 's/zeromq-//g'|awk -F "." '{print $1"."$2.".y"}')
+
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libzmq.so.5 /usr/${BASELIB}/
+
+	_copy_ldd $CONTAINER /usr/${BASELIB}/libzmq.so.5
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-zeromq:${ZEROMQ_VERSION_LABEL}
+	buildah rm $CONTAINER
+}
+
+

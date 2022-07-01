@@ -1,0 +1,23 @@
+#!/bin/sh
+
+############# openjdk ###############
+gentoo_container_openjdk() {
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export OPENJDK_SLOT_VERSION=$(equery list "*openjdk*"|line 2 |awk -F '/' '{print $2}'|sed 's/openjdk-//g'|awk -F "." '{print $1}')
+	export OPENJDK_VERSION_LABEL=$(equery list "*openjdk*"|line 2 |awk -F '/' '{print $2}'|sed 's/openjdk-//g'|awk -F "." '{print $1"."$2".y"}')
+
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/ /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/
+
+	for jbin in `ls /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/bin`
+	do
+		buildah run $CONTAINER -- ln -s /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/bin/${jbin} /usr/bin/${jbin}
+	done
+
+	# clean and commit
+	#_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-openjdk:${OPENJDK_VERSION_LABEL}
+	buildah rm $CONTAINER
+}
+
+

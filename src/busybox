@@ -1,0 +1,26 @@
+#!/bin/sh
+
+############# busybox ##################
+gentoo_container_busybox() {
+
+	_print_header "busybox"
+
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export BUSYBOX_VERSION_LABEL=$(equery list "*busybox*"|line 2 |awk -F '/' '{print $2}'|sed 's/busybox-//g'|awk -F "." '{print $1"."$2".y"}')
+
+	buildah copy $CONTAINER $ROOTDIR/bin/busybox /bin/
+	buildah copy $CONTAINER busybox.sh /
+
+	_copy_ldd $CONTAINER /bin/busybox
+
+	# clean, make symlinks and commit
+	_cleanup_utils $CONTAINER
+	buildah run $CONTAINER -- /bin/busybox sh /busybox.sh
+	buildah run $CONTAINER -- rm /busybox.sh
+	
+	buildah commit $CONTAINER gentoo-container-busybox:${BUSYBOX_VERSION_LABEL}
+	buildah rm $CONTAINER
+}
+
+

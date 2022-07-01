@@ -1,0 +1,37 @@
+#!/bin/sh
+
+############# php fpm ##################
+gentoo_container_php_fpm() {
+
+	export PHP_VERSION=$(php-fpm -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2}')
+	export PHP_VERSION_LABEL=$(php-fpm -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "php fpm $PHP_VERSION_LABEL"
+
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	buildah copy $CONTAINER $ROOTDIR/etc/php/fpm-php${PHP_VERSION}/ /etc/php/fpm-php${PHP_VERSION}/
+	buildah run $CONTAINER -- sh -c "/bin/ln -s /etc/php/fpm-php${PHP_VERSION} /etc/php/fpm-php"
+
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/php-fpm /usr/${BASELIB}/php${PHP_VERSION}/bin/ 
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/ 
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/php-config /usr/${BASELIB}/php${PHP_VERSION}/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/phpize /usr/${BASELIB}/php${PHP_VERSION}/bin/
+
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/* /usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/
+
+	buildah run $CONTAINER -- ln -s /usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/phar
+
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/php-fpm php-fpm"
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/php-config php-config"
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phpize phpize"
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phar.phar phar"
+
+	_copy_ldd $CONTAINER /usr/bin/php-fpm
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-php-fpm:${PHP_VERSION_LABEL}
+	buildah rm $CONTAINER
+}
+

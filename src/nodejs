@@ -1,0 +1,24 @@
+#!/bin/sh
+
+############# nodejs ##################
+gentoo_container_nodejs() {
+
+	_print_header "nodejs"
+
+	CONTAINER=$(buildah from gentoo-container-base)
+
+	export NODEJS_VERSION=$(node -v |sed 's/v//g' |awk -F "." '{print $1"."$2.".y"}')
+
+	buildah copy --ignorefile .containerignore --contextdir /usr/ $CONTAINER $ROOTDIR/usr/${BASELIB}/node_modules/ /usr/${BASELIB}/node_modules/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/env /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/node /usr/bin/
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/node_modules/npm/bin/npm-cli.js npm"
+	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/node_modules/npx/bin/npm-cli.js npx"
+
+	_copy_ldd $CONTAINER /usr/bin/node
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER gentoo-container-nodejs:${NODEJS_VERSION}
+	buildah rm $CONTAINER
+}
