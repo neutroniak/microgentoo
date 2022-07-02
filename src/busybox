@@ -14,11 +14,12 @@ gentoo_container_busybox() {
 
 	_copy_ldd $CONTAINER /bin/busybox
 
-	# clean, make symlinks and commit
-	_cleanup_utils $CONTAINER
 	buildah run $CONTAINER -- /bin/busybox sh /busybox.sh
 	buildah run $CONTAINER -- rm /busybox.sh
-	
+
+	#_cleanup_utils $CONTAINER
+
+	# commit
 	buildah commit $CONTAINER gentoo-container-busybox:${BUSYBOX_VERSION_LABEL}
 	buildah rm $CONTAINER
 }
