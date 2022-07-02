@@ -2,6 +2,9 @@
 
 ############# packer ################
 gentoo_container_packer() {
+
+	_print_header "packer"
+
 	CONTAINER=$(buildah from gentoo-container-base)
 
 	export PACKER_VERSION_LABEL=$(chroot $CHROOTDIR packer version|sed 's/Packer v//g' | line 1|awk -F "." '{print $1"."$2.".y"}')
