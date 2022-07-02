@@ -148,7 +148,7 @@ push_images(){
 	buildah push ${REGISTRY_ARGS} gentoo-container-php:latest ${REGISTRY_URL}/gentoo-container-php:latest
 }
 
-#gentoo_container_base
+gentoo_container_base
 
 if [ $2 ]; then
 	source src/$2
