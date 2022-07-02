@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if [ $1 ]; then
-	ROOTDIR=$1
-	CHROOTDIR=$1
+	export ROOTDIR=$1
+	export CHROOTDIR=$1
 else
-	ROOTDIR=""
-	CHROOTDIR="/"
+	export ROOTDIR=""
+	export CHROOTDIR="/"
 fi
 
 if [[ -f $ROOTDIR/usr/lib64/libc.so ]]; then
@@ -148,7 +148,7 @@ push_images(){
 	buildah push ${REGISTRY_ARGS} gentoo-container-php:latest ${REGISTRY_URL}/gentoo-container-php:latest
 }
 
-gentoo_container_base
+#gentoo_container_base
 
 if [ $2 ]; then
 	source src/$2

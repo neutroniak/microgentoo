@@ -7,9 +7,9 @@ gentoo_container_ruby() {
 
 	CONTAINER=$(buildah from gentoo-container-base)
 
-	export RUBY_VERSION=$(ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2}')
+	export RUBY_VERSION=$(chroot $CHROOTDIR ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2}')
 	export RUBY_VERSION_NUM=${RUBY_VERSION/\./}
-	export RUBY_VERSION_LABEL=$(ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
+	export RUBY_VERSION_LABEL=$(chroot $CHROOTDIR ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/bundle /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/bundler /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/rake /usr/bin/

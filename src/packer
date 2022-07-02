@@ -4,7 +4,7 @@
 gentoo_container_packer() {
 	CONTAINER=$(buildah from gentoo-container-base)
 
-	export PACKER_VERSION_LABEL=$(packer version|sed 's/Packer v//g' | line 1|awk -F "." '{print $1"."$2.".y"}')
+	export PACKER_VERSION_LABEL=$(chroot $CHROOTDIR packer -- version|sed 's/Packer v//g' | line 1|awk -F "." '{print $1"."$2.".y"}')
 
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/packer /usr/bin/
 

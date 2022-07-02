@@ -7,7 +7,7 @@ gentoo_container_nginx() {
 
 	CONTAINER=$(buildah from gentoo-container-base)
 
-	export NGINX_VERSION=$(nginx -v 2>/dev/stdout|line 1|awk -F '/' '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
+	export NGINX_VERSION=$(chroot $CHROOTDIR nginx -v 2>/dev/stdout|line 1|awk -F '/' '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
 
 	_copy_ldd $CONTAINER /usr/sbin/nginx
 	buildah copy $CONTAINER $ROOTDIR/usr/sbin/nginx /usr/sbin/

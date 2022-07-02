@@ -7,7 +7,7 @@ gentoo_container_git() {
 
 	CONTAINER=$(buildah from gentoo-container-base)
 
-	export GIT_VERSION=$(git --version|awk '{print $3}' |awk -F "." '{print $1"."$2.".y"}' )
+	export GIT_VERSION=$(chroot $CHROOTDIR git --version|awk '{print $3}' |awk -F "." '{print $1"."$2.".y"}' )
 
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/git-upload-pack /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/git-upload-archive /usr/bin/

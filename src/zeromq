@@ -7,7 +7,7 @@ gentoo_container_zeromq() {
 	
 	CONTAINER=$(buildah from gentoo-container-base)
 
-	export ZEROMQ_VERSION_LABEL=$(equery list "*zeromq*"|line 2 |awk -F '/' '{print $2}'|sed 's/zeromq-//g'|awk -F "." '{print $1"."$2.".y"}')
+	export ZEROMQ_VERSION_LABEL=$(chroot $CHROOTDIR equery -- list "*zeromq*"|line 2 |awk -F '/' '{print $2}'|sed 's/zeromq-//g'|awk -F "." '{print $1"."$2.".y"}')
 
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libzmq.so.5 /usr/${BASELIB}/
 

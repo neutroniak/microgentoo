@@ -7,8 +7,8 @@ gentoo_container_python() {
 	
 	CONTAINER=$(buildah from gentoo-container-base)
 
-	export PYTHON_VERSION=$(python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
-	export PYTHON_VERSION_LABEL=$(python -V|awk '{print $2}'|awk -F"." '{print $1"."$2.".y"}')
+	export PYTHON_VERSION=$(chroot $CHROOTDIR python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
+	export PYTHON_VERSION_LABEL=$(chroot $CHROOTDIR python -V|awk '{print $2}'|awk -F"." '{print $1"."$2.".y"}')
 
 	buildah copy --ignorefile .containerignore --contextdir /usr/ $CONTAINER /usr/lib/python${PYTHON_VERSION}/ /usr/lib/python${PYTHON_VERSION}/
 	buildah copy $CONTAINER $ROOTDIR/usr/lib/python-exec/python${PYTHON_VERSION}/* /usr/lib/python-exec/python${PYTHON_VERSION}/
