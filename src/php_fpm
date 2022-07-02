@@ -14,18 +14,18 @@ gentoo_container_php_fpm() {
 	buildah run $CONTAINER -- sh -c "/bin/ln -s /etc/php/fpm-php${PHP_VERSION} /etc/php/fpm-php"
 
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/php-fpm /usr/${BASELIB}/php${PHP_VERSION}/bin/ 
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/ 
+	#buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/ 
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/php-config /usr/${BASELIB}/php${PHP_VERSION}/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/phpize /usr/${BASELIB}/php${PHP_VERSION}/bin/
 
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/* /usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/
 
-	buildah run $CONTAINER -- ln -s /usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/phar
+	#buildah run $CONTAINER -- ln -s /usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/phar
 
 	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/php-fpm php-fpm"
 	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/php-config php-config"
 	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phpize phpize"
-	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phar.phar phar"
+	#buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phar.phar phar"
 
 	_copy_ldd $CONTAINER /usr/bin/php-fpm
 
