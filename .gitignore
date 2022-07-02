@@ -1,3 +1,5 @@
+packages
+config
 .vimsess
 *.swp
 *.swo

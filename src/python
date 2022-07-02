@@ -9,6 +9,7 @@ gentoo_container_python() {
 
 	export PYTHON_VERSION=$(python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
 	export PYTHON_VERSION_LABEL=$(python -V|awk '{print $2}'|awk -F"." '{print $1"."$2.".y"}')
+
 	buildah copy --ignorefile .containerignore --contextdir /usr/ $CONTAINER /usr/lib/python${PYTHON_VERSION}/ /usr/lib/python${PYTHON_VERSION}/
 	buildah copy $CONTAINER $ROOTDIR/usr/lib/python-exec/python${PYTHON_VERSION}/* /usr/lib/python-exec/python${PYTHON_VERSION}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libpython${PYTHON_VERSION}.so.1.0 /usr/${BASELIB}/
@@ -17,9 +18,6 @@ gentoo_container_python() {
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/python${PYTHON_VERSION}-config /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/lib/python-exec/python-exec2 /usr/lib/python-exec/
 	buildah copy $CONTAINER $ROOTDIR/etc/python-exec/ /etc/python-exec/
-	
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libexpat.so.1 /usr/${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libffi.so.8 /usr/${BASELIB}/
 	
 	buildah run $CONTAINER -- sh -c 'cd /usr/bin && ln -s python-exec2c python'
 	buildah run $CONTAINER -- sh -c 'cd /usr/bin && ln -s python-exec2c python3'
