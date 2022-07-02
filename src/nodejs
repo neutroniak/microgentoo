@@ -9,7 +9,7 @@ gentoo_container_nodejs() {
 
 	export NODEJS_VERSION=$(chroot $CHROOTDIR node -v |sed 's/v//g' |awk -F "." '{print $1"."$2.".y"}')
 
-	buildah copy --ignorefile .containerignore --contextdir /usr/ $CONTAINER $ROOTDIR/usr/${BASELIB}/node_modules/ /usr/${BASELIB}/node_modules/
+	buildah copy --ignorefile .containerignore --contextdir $ROOTDIR/usr/ $CONTAINER $ROOTDIR/usr/${BASELIB}/node_modules/ /usr/${BASELIB}/node_modules/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/env /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/node /usr/bin/
 	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/node_modules/npm/bin/npm-cli.js npm"
