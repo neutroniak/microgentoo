@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ############# nginx #################
-gentoo_container_nginx() {
+microgentoo_nginx() {
 
 	_print_header "nginx"
 
-	CONTAINER=$(buildah from gentoo-container-base)
+	CONTAINER=$(buildah from microgentoo/$CHOSTBASE/base)
 
 	export NGINX_VERSION=$(chroot $CHROOTDIR nginx -v 2>/dev/stdout|line 1|awk -F '/' '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
 
@@ -25,6 +25,6 @@ gentoo_container_nginx() {
 	
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER gentoo-container-nginx:${NGINX_VERSION}
+	buildah commit $CONTAINER microgentoo/$CHOSTBASE/nginx:${NGINX_VERSION}
 	buildah rm $CONTAINER
 }

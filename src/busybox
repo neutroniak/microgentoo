@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ############# busybox ##################
-gentoo_container_busybox() {
+microgentoo_busybox() {
 
 	_print_header "busybox"
 
-	CONTAINER=$(buildah from gentoo-container-base)
+	CONTAINER=$(buildah from microgentoo/$CHOSTBASE/base)
 
 	export BUSYBOX_VERSION_LABEL=$(chroot $CHROOTDIR equery -- list "*busybox*"|line 2 |awk -F '/' '{print $2}'|sed 's/busybox-//g'|awk -F "." '{print $1"."$2".y"}')
 
@@ -20,7 +20,7 @@ gentoo_container_busybox() {
 	#_cleanup_utils $CONTAINER
 
 	# commit
-	buildah commit $CONTAINER gentoo-container-busybox:${BUSYBOX_VERSION_LABEL}
+	buildah commit $CONTAINER microgentoo/$CHOSTBASE/busybox:${BUSYBOX_VERSION_LABEL}
 	buildah rm $CONTAINER
 }
 

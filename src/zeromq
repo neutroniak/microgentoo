@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ############# zeromq ############
-gentoo_container_zeromq() {
+microgentoo_zeromq() {
 
 	_print_header "zeromq"
 	
-	CONTAINER=$(buildah from gentoo-container-base)
+	CONTAINER=$(buildah from microgentoo/$CHOSTBASE/base)
 
 	export ZEROMQ_VERSION_LABEL=$(chroot $CHROOTDIR equery -- list "*zeromq*"|line 2 |awk -F '/' '{print $2}'|sed 's/zeromq-//g'|awk -F "." '{print $1"."$2.".y"}')
 
@@ -15,7 +15,7 @@ gentoo_container_zeromq() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER gentoo-container-zeromq:${ZEROMQ_VERSION_LABEL}
+	buildah commit $CONTAINER microgentoo/$CHOSTBASE/zeromq:${ZEROMQ_VERSION_LABEL}
 	buildah rm $CONTAINER
 }
 

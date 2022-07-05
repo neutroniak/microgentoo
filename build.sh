@@ -50,7 +50,7 @@ function _print_header() {
 	echo "#####################################################"
 }
 
-function gentoo_container_base() {
+function microgentoo_base() {
 	_print_header "base"
 	CONTAINER=$(buildah from scratch)
 
@@ -83,10 +83,12 @@ function gentoo_container_base() {
 	buildah copy $CONTAINER $ROOTDIR/etc/profile.env /etc/
 
 	if [ "${CHOST}" == "x86_64-gentoo-linux-musl" ]; then
+		export CHOSTBASE="musl"
 		buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libc.so /usr/${BASELIB}/
 		buildah copy $CONTAINER $ROOTDIR/${BASELIB}/ld-musl-x86_64.so.1 /${BASELIB}/
 		buildah copy $CONTAINER $ROOTDIR/etc/ld-musl-x86_64.path /etc/
 	else
+		export CHOSTBASE="gnu"
 		buildah copy $CONTAINER $ROOTDIR/etc/nsswitch.conf /etc/
 		buildah copy $CONTAINER $ROOTDIR/etc/ld.so.cache /etc/
 		buildah copy $CONTAINER $ROOTDIR/etc/ld.so.conf.d/ /etc/ld.so.conf.d/
@@ -127,38 +129,37 @@ function gentoo_container_base() {
 
 	# other
 	buildah copy $CONTAINER $ROOTDIR/usr/share/ca-certificates/ /usr/share/ca-certificates/
-	buildah run $CONTAINER -- mkdir /{var,tmp,var/empty,sbin,/usr/bin}
+	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,sbin,/usr/bin}
 	buildah run $CONTAINER -- chmod 777 /tmp
 
-	buildah commit $CONTAINER gentoo-container-base:latest
+	buildah commit $CONTAINER microgentoo/$CHOSTBASE/base:latest
 	buildah rm $CONTAINER
 }
 
 push_images(){
-	buildah push ${REGISTRY_ARGS} gentoo-container-base:latest ${REGISTRY_URL}/gentoo-container-base:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-gcc:latest ${REGISTRY_URL}/gentoo-container-gcc:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-python:latest ${REGISTRY_URL}/gentoo-container-python:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-nodejs:latest ${REGISTRY_URL}/gentoo-container-nodejs:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-zeromq:latest ${REGISTRY_URL}/gentoo-container-zeromq:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-packer:latest ${REGISTRY_URL}/gentoo-container-packer:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-openssh:latest ${REGISTRY_URL}/gentoo-container-openssh:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-git:latest ${REGISTRY_URL}/gentoo-container-git:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-openjdk:latest ${REGISTRY_URL}/gentoo-container-openjdk:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-ruby:latest ${REGISTRY_URL}/gentoo-container-ruby:latest
-	buildah push ${REGISTRY_ARGS} gentoo-container-php:latest ${REGISTRY_URL}/gentoo-container-php:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/base:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/base:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/gcc:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/gcc:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/python:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/python:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/nodejs:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/nodejs:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/zeromq:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/zeromq:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/packer:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/packer:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/openssh:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/openssh:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/git:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/git:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/openjdk:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/openjdk:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/ruby:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/ruby:latest
+	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/php:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/php:latest
 }
 
-gentoo_container_base
+microgentoo_base
 
 if [ $2 ]; then
 	source src/$2
-	gentoo_container_$2
+	microgentoo_$2
 else
 	arr=$(cat packages)
 	for f in ${arr[@]}; do
     	source src/$f
-		gentoo_container_$f
+		microgentoo_$f
 	done
 fi
-
 

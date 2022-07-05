@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ############# nodejs ##################
-gentoo_container_nodejs() {
+microgentoo_nodejs() {
 
 	_print_header "nodejs"
 
-	CONTAINER=$(buildah from gentoo-container-base)
+	CONTAINER=$(buildah from microgentoo/$CHOSTBASE/base)
 
 	export NODEJS_VERSION=$(chroot $CHROOTDIR node -v |sed 's/v//g' |awk -F "." '{print $1"."$2.".y"}')
 
@@ -19,6 +19,6 @@ gentoo_container_nodejs() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER gentoo-container-nodejs:${NODEJS_VERSION}
+	buildah commit $CONTAINER microgentoo/$CHOSTBASE/nodejs:${NODEJS_VERSION}
 	buildah rm $CONTAINER
 }

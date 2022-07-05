@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ############# packer ################
-gentoo_container_packer() {
+microgentoo_packer() {
 
 	_print_header "packer"
 
-	CONTAINER=$(buildah from gentoo-container-base)
+	CONTAINER=$(buildah from microgentoo/$CHOSTBASE/base)
 
 	export PACKER_VERSION_LABEL=$(chroot $CHROOTDIR packer version|sed 's/Packer v//g' | line 1|awk -F "." '{print $1"."$2.".y"}')
 
@@ -13,6 +13,6 @@ gentoo_container_packer() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER gentoo-container-packer:${PACKER_VERSION_LABEL}
+	buildah commit $CONTAINER microgentoo/$CHOSTBASE/packer:${PACKER_VERSION_LABEL}
 	buildah rm $CONTAINER
 }

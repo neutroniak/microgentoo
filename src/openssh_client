@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ############# openssh client ########
-gentoo_container_openssh_client() {
+microgentoo_openssh_client() {
 
 	_print_header "openssh client"
 
-	CONTAINER=$(buildah from gentoo-container-base)
+	CONTAINER=$(buildah from microgentoo/$CHOSTBASE/base)
 
 	export SSH_VERSION=$(chroot $CHROOTDIR equery -- list "*openssh*"|line 2 |awk -F '/' '{print $2}'|sed 's/openssh-//g'|sed 's/_.*.$//g'| awk -F "." '{print $1"."$2.".y"}')
 
@@ -20,7 +20,7 @@ gentoo_container_openssh_client() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER gentoo-container-openssh-client:${SSH_VERSION}
+	buildah commit $CONTAINER microgentoo/$CHOSTBASE/openssh-client:${SSH_VERSION}
 	buildah rm $CONTAINER
 }
 
