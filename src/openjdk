@@ -2,7 +2,7 @@
 
 ############# openjdk ###############
 microgentoo_openjdk() {
-	CONTAINER=$(buildah from microgentoo/base)
+	CONTAINER=$(buildah from $PREFIX/base)
 
 	export OPENJDK_SLOT_VERSION=$(chroot $CHROOTDIR equery -- list "*openjdk*"|line 2 |awk -F '/' '{print $2}'|sed 's/openjdk-//g'|awk -F "." '{print $1}')
 	export OPENJDK_VERSION_LABEL=$(chroot $CHROOTDIR equery -- list "*openjdk*"|line 2 |awk -F '/' '{print $2}'|sed 's/openjdk-//g'|awk -F "." '{print $1"."$2".y"}')
@@ -16,7 +16,7 @@ microgentoo_openjdk() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER microgentoo/openjdk:${OPENJDK_VERSION_LABEL}
+	buildah commit $CONTAINER $PREFIX/openjdk:${OPENJDK_VERSION_LABEL}
 	buildah rm $CONTAINER
 }
 

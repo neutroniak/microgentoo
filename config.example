@@ -1,2 +1,11 @@
-base
-nodejs
+#microgentoo config
+
+PACKAGES="python"
+#PACKAGES="python nginx nodejs"
+
+ROOTDIR="/"
+#ROOTDIR="/mnt/musl"
+
+PREFIX="microgentoo"
+#PREFIX="microgentoo/musl"
+

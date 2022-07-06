@@ -5,7 +5,7 @@ microgentoo_git() {
 
 	_print_header "git"
 
-	CONTAINER=$(buildah from microgentoo/base)
+	CONTAINER=$(buildah from $PREFIX/base)
 
 	export GIT_VERSION=$(chroot $CHROOTDIR git --version|awk '{print $3}' |awk -F "." '{print $1"."$2.".y"}' )
 
@@ -29,7 +29,7 @@ microgentoo_git() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER microgentoo/git:${GIT_VERSION}
+	buildah commit $CONTAINER $PREFIX/git:${GIT_VERSION}
 	buildah rm $CONTAINER
 }
 

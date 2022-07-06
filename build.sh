@@ -1,11 +1,30 @@
 #!/bin/sh
 
 if [ $1 ]; then
-	export ROOTDIR=$1
-	export CHROOTDIR=$1
+	if [ -f $1 ]; then
+		. ./$1
+	else
+		. $1
+	fi
+elif [ -f /etc/microgentoo/config ]; then
+	. /etc/microgentoo/config
+elif [ -f config ]; then
+	. ./config
 else
+	echo "No config file found.. Exiting"
+	exit 1
+fi
+
+export PACKAGES
+export ROOTDIR
+export PREFIX
+
+if [ "x$ROOTDIR" == "x/" ]; then
 	export ROOTDIR=""
 	export CHROOTDIR="/"
+else
+	export ROOTDIR=$ROOTDIR
+	export CHROOTDIR=$ROOTDIR
 fi
 
 if [[ -f $ROOTDIR/usr/lib64/libc.so ]]; then
@@ -133,7 +152,7 @@ function microgentoo_base() {
 	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,sbin,/usr/bin}
 	buildah run $CONTAINER -- chmod 777 /tmp
 
-	buildah commit $CONTAINER microgentoo/base:latest
+	buildah commit $CONTAINER $PREFIX/base:latest
 	buildah rm $CONTAINER
 }
 
@@ -143,7 +162,7 @@ if [ $2 ]; then
 	source src/$2
 	microgentoo_$2
 else
-	arr=$(cat packages)
+	arr=$PACKAGES
 	for f in ${arr[@]}; do
     	source src/$f
 		microgentoo_$f

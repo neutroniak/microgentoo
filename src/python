@@ -5,7 +5,7 @@ microgentoo_python() {
 
 	_print_header "python"
 	
-	CONTAINER=$(buildah from microgentoo/base)
+	CONTAINER=$(buildah from $PREFIX/base)
 
 	export PYTHON_VERSION=$(chroot $CHROOTDIR python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
 	export PYTHON_VERSION_LABEL=$(chroot $CHROOTDIR python -V|awk '{print $2}'|awk -F"." '{print $1"."$2.".y"}')
@@ -31,7 +31,7 @@ microgentoo_python() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER microgentoo/python:${PYTHON_VERSION_LABEL}
+	buildah commit $CONTAINER $PREFIX/python:${PYTHON_VERSION_LABEL}
 	buildah rm $CONTAINER
 }
 
