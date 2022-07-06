@@ -122,6 +122,7 @@ function microgentoo_base() {
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypto.so.1.1 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libssl.so.1.1 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libffi.so.8 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libexpat.so.1 /usr/${BASELIB}/
 
 	buildah run $CONTAINER -- /bin/ln -s /usr/${BASELIB}/libcrypto.so.1.1 /usr/${BASELIB}/libcrypto.so
 	buildah run $CONTAINER -- /bin/ln -s /usr/${BASELIB}/libcrypto.so.1.1 /usr/${BASELIB}/libcrypto.so.1
