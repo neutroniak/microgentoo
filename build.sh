@@ -133,22 +133,8 @@ function microgentoo_base() {
 	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,sbin,/usr/bin}
 	buildah run $CONTAINER -- chmod 777 /tmp
 
-	buildah commit $CONTAINER microgentoo/$CHOSTBASE/base:latest
+	buildah commit $CONTAINER microgentoo/base:latest
 	buildah rm $CONTAINER
-}
-
-push_images(){
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/base:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/base:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/gcc:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/gcc:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/python:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/python:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/nodejs:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/nodejs:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/zeromq:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/zeromq:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/packer:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/packer:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/openssh:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/openssh:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/git:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/git:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/openjdk:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/openjdk:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/ruby:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/ruby:latest
-	buildah push ${REGISTRY_ARGS} microgentoo/$CHOSTBASE/php:latest ${REGISTRY_URL}/microgentoo/$CHOSTBASE/php:latest
 }
 
 microgentoo_base

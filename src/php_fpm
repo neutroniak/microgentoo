@@ -8,7 +8,7 @@ microgentoo_php_fpm() {
 
 	_print_header "php fpm $PHP_VERSION_LABEL"
 
-	CONTAINER=$(buildah from microgentoo/$CHOSTBASE/base)
+	CONTAINER=$(buildah from microgentoo/base)
 
 	buildah copy $CONTAINER $ROOTDIR/etc/php/fpm-php${PHP_VERSION}/ /etc/php/fpm-php${PHP_VERSION}/
 	buildah run $CONTAINER -- sh -c "/bin/ln -s /etc/php/fpm-php${PHP_VERSION} /etc/php/fpm-php"
@@ -31,7 +31,7 @@ microgentoo_php_fpm() {
 
 	# clean and commit
 	_cleanup_utils $CONTAINER
-	buildah commit $CONTAINER microgentoo/$CHOSTBASE/php-fpm:${PHP_VERSION_LABEL}
+	buildah commit $CONTAINER microgentoo/php-fpm:${PHP_VERSION_LABEL}
 	buildah rm $CONTAINER
 }
 
