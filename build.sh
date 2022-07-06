@@ -1,15 +1,9 @@
 #!/bin/sh
 
 if [ $1 ]; then
-	if [ -f $1 ]; then
-		. ./$1
-	else
-		. $1
-	fi
+	source $1
 elif [ -f /etc/microgentoo/config ]; then
-	. /etc/microgentoo/config
-elif [ -f config ]; then
-	. ./config
+	source /etc/microgentoo/config
 else
 	echo "No config file found.. Exiting"
 	exit 1
