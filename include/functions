@@ -1,0 +1,39 @@
+#!/bin/sh
+
+function _cleanup_utils() {
+	CONTAINER=$1
+	buildah run $CONTAINER -- rm /bin/chmod
+	buildah run $CONTAINER -- rm /bin/mkdir
+	buildah run $CONTAINER -- rm /bin/ls
+	buildah run $CONTAINER -- rm /bin/ln
+	buildah run $CONTAINER -- rm /bin/sh
+	buildah run $CONTAINER -- rm /bin/chown
+	buildah run $CONTAINER -- rm /usr/sbin/useradd
+	buildah run $CONTAINER -- rm /usr/sbin/groupadd
+	buildah run $CONTAINER -- rm /bin/rm
+}
+
+function _copy_ldd() {
+	CONTAINER=$1
+	BINFILE=$2
+
+	SAVEIFS=$IFS
+	IFS=$'\n'
+	ARR=(`chroot $CHROOTDIR ldd -- $BINFILE`)
+	IFS=$SAVEIFS
+	for (( i=0; i<${#ARR[@]}; i++ ))
+	do
+    	LIBFILE=$(echo "${ARR[$i]}"|awk '{print $3}')
+		if [ "$LIBFILE" != "" ] && [ "$LIBFILE" != "ldd" ]; then
+			buildah copy $CONTAINER "$ROOTDIR/$LIBFILE" $LIBFILE
+		fi
+	done
+}
+
+function _print_header() {
+	echo "#####################################################"
+	echo "##################### $1 ############################"
+	echo "#####################################################"
+}
+
+
