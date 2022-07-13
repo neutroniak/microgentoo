@@ -14,10 +14,21 @@ microgentoo_busybox() {
 
 	_copy_ldd $CONTAINER /bin/busybox
 
+	buildah run $CONTAINER -- rm /bin/chmod
+	buildah run $CONTAINER -- rm /bin/mkdir
+	buildah run $CONTAINER -- rm /bin/ls
+	buildah run $CONTAINER -- rm /bin/sh
+	buildah run $CONTAINER -- rm /bin/chown
+	buildah run $CONTAINER -- rm /usr/sbin/useradd
+	buildah run $CONTAINER -- rm /usr/sbin/groupadd
+	buildah run $CONTAINER -- rm /bin/rm
+	
 	buildah run $CONTAINER -- /bin/busybox sh /busybox.sh
-	buildah run $CONTAINER -- rm /busybox.sh
+	buildah run $CONTAINER -- mv /bin/ln /bin/tmpln
+	buildah run $CONTAINER -- /bin/tmpln -s /bin/busybox /bin/ln
+	buildah run $CONTAINER -- rm /bin/tmpln
 
-	#_cleanup_utils $CONTAINER
+	buildah run $CONTAINER -- rm /busybox.sh
 
 	# commit
 	buildah commit $CONTAINER $PREFIX/busybox:${BUSYBOX_VERSION_LABEL}
