@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function microgentoo_base() {
+microgentoo_base() {
 	_print_header "base"
 	CONTAINER=$(buildah from scratch)
 
@@ -79,7 +79,7 @@ function microgentoo_base() {
 
 	# other
 	buildah copy $CONTAINER $ROOTDIR/usr/share/ca-certificates/ /usr/share/ca-certificates/
-	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,sbin,/usr/bin}
+	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,var/tmp,sbin,/usr/bin}
 	buildah run $CONTAINER -- chmod 777 /tmp
 
 	buildah commit $CONTAINER $PREFIX/base:latest
