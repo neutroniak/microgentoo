@@ -20,4 +20,3 @@ microgentoo_openjdk() {
 	buildah rm $CONTAINER
 }
 
-
