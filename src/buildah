@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# reference link to use buildah in containers: https://developers.redhat.com/blog/2019/08/14/best-practices-for-running-buildah-in-a-container#
+# ex: podman run -it -e_BUILDAH_STARTED_IN_USERNS="" -e BUILDAH_ISOLATION=chroot --device /dev/fuse -v /var/lib/shared/:/var/lib/shared microgentoo/buildah:1.25.y sh
+
+############# buildah ###############
+microgentoo_buildah() {
+	CONTAINER=$(buildah from $PREFIX/base)
+
+	export BUILDAH_VERSION=$(chroot $CHROOTDIR buildah -v |awk '{print $3}'|awk -F "." '{print $1"."$2.".y"}')
+
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/buildah /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/bin/mount /bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/fuse-overlayfs /usr/bin/
+
+	_copy_ldd $CONTAINER /usr/bin/buildah
+	_copy_ldd $CONTAINER /usr/bin/fuse-overlayfs
+
+	buildah copy $CONTAINER src/resources/buildah/storage.conf /etc/containers/
+	buildah add $CONTAINER https://raw.githubusercontent.com/containers/podman/main/test/registries.conf /etc/containers/
+	buildah add $CONTAINER https://raw.githubusercontent.com/containers/podman/main/test/policy.json /etc/containers/
+
+	# clean and commit
+	buildah commit $CONTAINER $PREFIX/buildah:${BUILDAH_VERSION}
+	buildah rm $CONTAINER
+}
+
