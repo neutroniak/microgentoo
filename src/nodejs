@@ -3,11 +3,11 @@
 ############# nodejs ##################
 microgentoo_nodejs() {
 
-	_print_header "nodejs"
-
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export NODEJS_VERSION=$(chroot $CHROOTDIR node -v |sed 's/v//g' |awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "nodejs" $NODEJS_VERSION
 
 	buildah copy --ignorefile .containerignore --contextdir $ROOTDIR/usr/ $CONTAINER $ROOTDIR/usr/${BASELIB}/node_modules/ /usr/${BASELIB}/node_modules/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/env /usr/bin/

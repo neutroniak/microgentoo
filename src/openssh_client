@@ -3,11 +3,12 @@
 ############# openssh client ########
 microgentoo_openssh_client() {
 
-	_print_header "openssh client"
 
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export SSH_VERSION=$(chroot $CHROOTDIR equery -- list "*openssh*"|line 2 |awk -F '/' '{print $2}'|sed 's/openssh-//g'|sed 's/_.*.$//g'| awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "openssh client" $SSH_VERSION
 
 	_copy_ldd $CONTAINER /usr/sbin/sshd
 

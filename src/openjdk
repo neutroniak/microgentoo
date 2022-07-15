@@ -2,14 +2,19 @@
 
 ############# openjdk ###############
 microgentoo_openjdk() {
+
 	CONTAINER=$(buildah from $PREFIX/base)
 
-	export OPENJDK_SLOT_VERSION=$(chroot $CHROOTDIR equery -- list "*openjdk*"|line 2 |awk -F '/' '{print $2}'|sed 's/openjdk-//g'|awk -F "." '{print $1}')
-	export OPENJDK_VERSION_LABEL=$(chroot $CHROOTDIR equery -- list "*openjdk*"|line 2 |awk -F '/' '{print $2}'|sed 's/openjdk-//g'|awk -F "." '{print $1"."$2".y"}')
+	export JAVACMD=$(chroot $CHROOTDIR chroot /mnt/files/linux/musl find -- /usr/lib/ -executable -iname "java")
+
+	export OPENJDK_SLOT_VERSION=$(chroot $CHROOTDIR $JAVACMD -version 2>&1 | line 1|awk '{print $3}'|sed 's/"//g' | awk -F "." '{print $1}')
+	export OPENJDK_VERSION_LABEL=$(chroot $CHROOTDIR $JAVACMD -version 2>&1 | line 1|awk '{print $3}'|sed 's/"//g' | awk -F "." '{print $1"."$2".y"}')
+
+	_print_header "openjdk" $OPENJDK_VERSION_LABEL
 
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/ /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/
 
-	for jbin in `ls /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/bin`
+	for jbin in `chroot $CHROOTDIR ls /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/bin`
 	do
 		buildah run $CONTAINER -- ln -s /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/bin/${jbin} /usr/bin/${jbin}
 	done

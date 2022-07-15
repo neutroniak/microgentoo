@@ -5,9 +5,12 @@
 
 ############# buildah ###############
 microgentoo_buildah() {
+
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export BUILDAH_VERSION=$(chroot $CHROOTDIR buildah -v |awk '{print $3}'|awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "buildah" $BUILDAH_VERSION
 
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/buildah /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/bin/mount /bin/

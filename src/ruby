@@ -3,13 +3,14 @@
 ############# ruby ##################
 microgentoo_ruby() {
 
-	_print_header "ruby"
-
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export RUBY_VERSION=$(chroot $CHROOTDIR ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2}')
 	export RUBY_VERSION_NUM=${RUBY_VERSION/\./}
 	export RUBY_VERSION_LABEL=$(chroot $CHROOTDIR ruby -v |awk '{print $2}'|awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "ruby" $RUBY_VERSION_LABEL
+
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/bundle /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/bundler /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/rake /usr/bin/

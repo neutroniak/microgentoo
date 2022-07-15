@@ -3,12 +3,12 @@
 ############# zeromq ############
 microgentoo_zeromq() {
 
-	_print_header "zeromq"
-	
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export ZEROMQ_VERSION_LABEL=$(chroot $CHROOTDIR equery -- list "*zeromq*"|line 2 |awk -F '/' '{print $2}'|sed 's/zeromq-//g'|awk -F "." '{print $1"."$2.".y"}')
 
+	_print_header "zeromq" $ZEROMQ_VERSION_LABEL
+	
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libzmq.so.5 /usr/${BASELIB}/
 
 	_copy_ldd $CONTAINER /usr/${BASELIB}/libzmq.so.5

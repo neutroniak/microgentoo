@@ -3,12 +3,13 @@
 ############# python ################
 microgentoo_python() {
 
-	_print_header "python"
-	
+
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export PYTHON_VERSION=$(chroot $CHROOTDIR python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
 	export PYTHON_VERSION_LABEL=$(chroot $CHROOTDIR python -V|awk '{print $2}'|awk -F"." '{print $1"."$2.".y"}')
+
+	_print_header "python" $PYTHON_VERSION_LABEL
 
 	buildah copy --ignorefile .containerignore --contextdir $ROOTDIR/usr/ $CONTAINER $ROOTDIR/usr/lib/python${PYTHON_VERSION}/ /usr/lib/python${PYTHON_VERSION}/
 	buildah copy $CONTAINER $ROOTDIR/usr/lib/python-exec/python${PYTHON_VERSION}/* /usr/lib/python-exec/python${PYTHON_VERSION}/

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 microgentoo_base() {
-	_print_header "base"
+	_print_header "base" "latest"
 	CONTAINER=$(buildah from scratch)
 
 	export CHOST=$(chroot $CHROOTDIR emerge -- --info |grep CHOST|sed 's/CHOST="//g'|sed 's/"//g')

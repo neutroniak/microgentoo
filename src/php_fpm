@@ -6,7 +6,7 @@ microgentoo_php_fpm() {
 	export PHP_VERSION=$(chroot $CHROOTDIR php-fpm -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2}')
 	export PHP_VERSION_LABEL=$(chroot $CHROOTDIR php-fpm -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2.".y"}')
 
-	_print_header "php fpm $PHP_VERSION_LABEL"
+	_print_header "php_fpm" $PHP_VERSION_LABEL
 
 	CONTAINER=$(buildah from $PREFIX/base)
 

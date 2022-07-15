@@ -3,11 +3,11 @@
 ############# git ###################
 microgentoo_git() {
 
-	_print_header "git"
-
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export GIT_VERSION=$(chroot $CHROOTDIR git --version|awk '{print $3}' |awk -F "." '{print $1"."$2.".y"}' )
+
+	_print_header "git" $GIT_VERSION
 
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/git-upload-pack /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/bin/git-upload-archive /usr/bin/
