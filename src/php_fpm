@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ############# php fpm ##################
-microgentoo_php-fpm() {
+microgentoo_php_fpm() {
 
 	CONTAINER=$(buildah from $PREFIX/base)
 
