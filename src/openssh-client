@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ############# openssh client ########
-microgentoo_openssh_client() {
+microgentoo_openssh-client() {
 
 	CONTAINER=$(buildah from $PREFIX/base)
 
