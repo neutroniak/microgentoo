@@ -3,12 +3,12 @@
 ############# php fpm ##################
 microgentoo_php_fpm() {
 
+	CONTAINER=$(buildah from $PREFIX/base)
+
 	export PHP_VERSION=$(chroot $CHROOTDIR php-fpm -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2}')
 	export PHP_VERSION_LABEL=$(chroot $CHROOTDIR php-fpm -v |awk '/^PHP/ {print $2}'|awk -F "." '{print $1"."$2.".y"}')
 
 	_print_header "php_fpm" $PHP_VERSION_LABEL
-
-	CONTAINER=$(buildah from $PREFIX/base)
 
 	buildah copy $CONTAINER $ROOTDIR/etc/php/fpm-php${PHP_VERSION}/ /etc/php/fpm-php${PHP_VERSION}/
 	buildah run $CONTAINER -- sh -c "/bin/ln -s /etc/php/fpm-php${PHP_VERSION} /etc/php/fpm-php"
@@ -18,7 +18,7 @@ microgentoo_php_fpm() {
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/php-config /usr/${BASELIB}/php${PHP_VERSION}/bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/phpize /usr/${BASELIB}/php${PHP_VERSION}/bin/
 
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/* /usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/ /usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/
 
 	#buildah run $CONTAINER -- ln -s /usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/phar
 
@@ -26,6 +26,11 @@ microgentoo_php_fpm() {
 	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/php-config php-config"
 	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phpize phpize"
 	#buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phar.phar phar"
+
+	for exten in `chroot $CHROOTDIR find /usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/extensions`
+	do
+		_copy_ldd $CONTAINER ${exten} 2>/dev/null
+	done
 
 	_copy_ldd $CONTAINER /usr/bin/php-fpm
 

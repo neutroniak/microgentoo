@@ -1,10 +1,12 @@
 #!/bin/sh
 
 microgentoo_base() {
-	_print_header "base" "latest"
+
 	CONTAINER=$(buildah from scratch)
 
 	export CHOST=$(chroot $CHROOTDIR emerge -- --info |grep CHOST|sed 's/CHOST="//g'|sed 's/"//g')
+
+	_print_header "base" "latest"
 
 	buildah copy $CONTAINER $ROOTDIR/bin/mkdir /bin/
 	buildah copy $CONTAINER $ROOTDIR/bin/chmod /bin/
@@ -79,7 +81,7 @@ microgentoo_base() {
 
 	# other
 	buildah copy $CONTAINER $ROOTDIR/usr/share/ca-certificates/ /usr/share/ca-certificates/
-	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,var/tmp,sbin,/usr/bin}
+	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,var/log,var/tmp,sbin,/usr/bin}
 	buildah run $CONTAINER -- chmod 777 /tmp
 
 	buildah commit $CONTAINER $PREFIX/base:latest

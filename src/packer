@@ -3,7 +3,6 @@
 ############# packer ################
 microgentoo_packer() {
 
-
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export PACKER_VERSION_LABEL=$(chroot $CHROOTDIR packer version|sed 's/Packer v//g' | line 1|awk -F "." '{print $1"."$2.".y"}')

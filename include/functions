@@ -35,6 +35,9 @@ function _print_header() {
 	echo "#####################################################"
 	echo "Package:  $1"
 	echo "Version:  $2"
+	echo "Host: $CHOST"
+	echo "Prefix: $PREFIX"
+	echo "Root: $ROOTDIR"
 	echo "#####################################################"
 	echo ""
 }

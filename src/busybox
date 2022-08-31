@@ -5,7 +5,8 @@ microgentoo_busybox() {
 
 	CONTAINER=$(buildah from $PREFIX/base)
 
-	export BUSYBOX_VERSION_LABEL=$(chroot $CHROOTDIR equery -- list "*busybox*"|line 2 |awk -F '/' '{print $2}'|sed 's/busybox-//g'|awk -F "." '{print $1"."$2".y"}')
+	export BUSYBOX_PKGPF=$(chroot $CHROOTDIR find /var/db/pkg/ -iwholename '*sys-apps/busybox*'|line 1)
+	export BUSYBOX_VERSION_LABEL=$(chroot $CHROOTDIR cat "${BUSYBOX_PKGPF}/PF" |sed 's/busybox-//g' |awk -F "." '{print $1"."$2.".y"}')
 
 	_print_header "busybox" $BUSYBOX_VERSION_LABEL
 
@@ -22,7 +23,7 @@ microgentoo_busybox() {
 	buildah run $CONTAINER -- rm /usr/sbin/useradd
 	buildah run $CONTAINER -- rm /usr/sbin/groupadd
 	buildah run $CONTAINER -- rm /bin/rm
-	
+
 	buildah run $CONTAINER -- /bin/busybox sh /busybox.sh
 	buildah run $CONTAINER -- mv /bin/ln /bin/tmpln
 	buildah run $CONTAINER -- /bin/tmpln -s /bin/busybox /bin/ln

@@ -3,7 +3,6 @@
 ############# python ################
 microgentoo_python() {
 
-
 	CONTAINER=$(buildah from $PREFIX/base)
 
 	export PYTHON_VERSION=$(chroot $CHROOTDIR python -V|awk '{print $2}'|awk -F"." '{print $1"."$2}')
