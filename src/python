@@ -20,6 +20,7 @@ microgentoo_python() {
 	buildah copy $CONTAINER $ROOTDIR/etc/python-exec/ /etc/python-exec/
 
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libffi.so.8 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libexpat.so.1 /usr/${BASELIB}/
 
 	buildah run $CONTAINER -- sh -c 'cd /usr/bin && ln -s python-exec2c python'
 	buildah run $CONTAINER -- sh -c 'cd /usr/bin && ln -s python-exec2c python3'
