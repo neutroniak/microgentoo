@@ -5,8 +5,8 @@ microgentoo_zeromq() {
 
 	CONTAINER=$(buildah from $PREFIX/base)
 
-	export ZEROMOQ_PKGPF=$(chroot $CHROOTDIR find /var/db/pkg/ -iwholename '*net-libs/zeromq*'|line 1)
-	export ZEROMQ_VERSION_LABEL=$(chroot $CHROOTDIR cat "${ZEROMQ_PKGPF}/PF" |sed 's/zeromq-//g' |awk -F "." '{print $1"."$2.".y"}')
+	export ZEROMQ_PKGPF=$(chroot $CHROOTDIR find /var/db/pkg/ -iwholename '*net-libs/zeromq*'|line 1)
+	export ZEROMQ_VERSION_LABEL=$(chroot $CHROOTDIR cat $ZEROMQ_PKGPF"/"PF |sed 's/zeromq-//g' |awk -F "." '{print $1"."$2.".y"}')
 
 	_print_header "zeromq" $ZEROMQ_VERSION_LABEL
 	
