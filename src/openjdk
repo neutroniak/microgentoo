@@ -19,6 +19,8 @@ microgentoo_openjdk() {
 		buildah run $CONTAINER -- ln -s /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/bin/${jbin} /usr/bin/${jbin}
 	done
 
+	_copy_ldd $CONTAINER /usr/${BASELIB}/openjdk-${OPENJDK_SLOT_VERSION}/lib/server/libjvm.so
+
 	# clean and commit
 	_cleanup_utils $CONTAINER
 	buildah commit $CONTAINER $PREFIX/openjdk:${OPENJDK_VERSION_LABEL}
