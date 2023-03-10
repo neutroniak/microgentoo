@@ -1,0 +1,22 @@
+#!/bin/sh
+
+############# bash ################
+microgentoo_bash() {
+
+	CONTAINER=$(buildah from $PREFIX/base)
+
+	export BASH_VERSION_LABEL=$(chroot $CHROOTDIR bash --version|sed -n '1p'|awk '{print $4}' | line 1|awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "bash" $BASH_VERSION_LABEL
+
+	buildah copy $CONTAINER $ROOTDIR/bin/bash /bin/
+	buildah copy $CONTAINER $ROOTDIR/bin/rbash /bin/
+
+	_copy_ldd $CONTAINER /bin/bash
+	_copy_ldd $CONTAINER /bin/rbash
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER $PREFIX/bash:${BASH_VERSION_LABEL}
+	buildah rm $CONTAINER
+}
