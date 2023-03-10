@@ -24,4 +24,3 @@ microgentoo_openssh_client() {
 	buildah rm $CONTAINER
 }
 
-

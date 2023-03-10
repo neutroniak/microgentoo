@@ -14,6 +14,7 @@ microgentoo_base() {
 	buildah copy $CONTAINER $ROOTDIR/bin/ln /bin/
 	buildah copy $CONTAINER $ROOTDIR/bin/rm /bin/
 	buildah copy $CONTAINER $ROOTDIR/bin/sh /bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/iconv /usr/bin/
 	buildah copy $CONTAINER $ROOTDIR/bin/chown /bin/
 	buildah copy $CONTAINER $ROOTDIR/usr/sbin/useradd /usr/sbin/
 	buildah copy $CONTAINER $ROOTDIR/usr/sbin/groupadd /usr/sbin/
