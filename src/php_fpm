@@ -19,6 +19,7 @@ microgentoo_php_fpm() {
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/bin/phpize /usr/${BASELIB}/php${PHP_VERSION}/bin/
 
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/ /usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/php${PHP_VERSION}/lib/ /usr/${BASELIB}/php${PHP_VERSION}/lib/
 
 	#buildah run $CONTAINER -- ln -s /usr/${BASELIB}/php${PHP_VERSION}/bin/phar.phar /usr/${BASELIB}/php${PHP_VERSION}/bin/phar
 
@@ -27,7 +28,7 @@ microgentoo_php_fpm() {
 	buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phpize phpize"
 	#buildah run $CONTAINER -- sh -c "cd /usr/bin && ln -s ../${BASELIB}/php${PHP_VERSION}/bin/phar.phar phar"
 
-	for exten in `chroot $CHROOTDIR find /usr/${BASELIB}/php${PHP_VERSION}/${BASELIB}/extensions`
+	for exten in `chroot $CHROOTDIR find /usr/${BASELIB}/php${PHP_VERSION}/lib/extensions`
 	do
 		_copy_ldd $CONTAINER ${exten} 2>/dev/null
 	done
