@@ -1,11 +1,10 @@
 #!/bin/sh
 
 if [ $1 ]; then
-	source $1
-elif [ -f /etc/microgentoo/config ]; then
-	source /etc/microgentoo/config
+	source /etc/microgentoo/$1
 else
 	echo "No config file found.. Exiting"
+	echo "Usage: ./build <config>"
 	exit 1
 fi
 
