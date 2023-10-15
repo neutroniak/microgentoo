@@ -83,7 +83,7 @@ microgentoo_base() {
 	buildah run $CONTAINER -- /bin/ln -s /usr/${BASELIB}/libcrypto.so.3 /usr/${BASELIB}/libcrypto.so
 	buildah run $CONTAINER -- /bin/ln -s /usr/${BASELIB}/libssl.so.3 /usr/${BASELIB}/libssl.so
 
-	buildah run $CONTAINER -- /bin/ln -s /usr/lib/gcc/x86_64-pc-linux-gnu/12/libgomp.so.1.0.0 /usr/lib/gcc/x86_64-pc-linux-gnu/12/libgomp.so.1
+	buildah run $CONTAINER -- /bin/ln -s /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_MAJOR}/libgomp.so.1.0.0 /usr/lib/gcc/x86_64-pc-linux-gnu/${GCC_MAJOR}/libgomp.so.1
 	# other
 	buildah copy $CONTAINER $ROOTDIR/usr/share/ca-certificates/ /usr/share/ca-certificates/
 	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,var/log,var/tmp,sbin,/usr/bin}
