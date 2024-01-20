@@ -73,6 +73,8 @@ microgentoo_base() {
 
 	# usr
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypto.so.3 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libbsd.so.0 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libmd.so.0 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libssl.so.3 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libffi.so.8 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libexpat.so.1 /usr/${BASELIB}/
