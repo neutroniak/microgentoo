@@ -65,7 +65,6 @@ microgentoo_base() {
 	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libattr.so.1 /${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libtinfo.so.6 /${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libtinfow.so.6 /${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libz.so.1 /${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libbz2.so.1 /${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libreadline.so.8 /${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libtinfo.so.6 /${BASELIB}/
@@ -74,6 +73,7 @@ microgentoo_base() {
 	# usr
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypto.so.3 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libbsd.so.0 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libz.so.1 /${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libmd.so.0 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libssl.so.3 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libffi.so.8 /usr/${BASELIB}/
