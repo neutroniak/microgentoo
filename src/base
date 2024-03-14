@@ -59,6 +59,7 @@ microgentoo_base() {
 		buildah copy $CONTAINER $ROOTDIR/${BASELIB}/librt.so.1 /${BASELIB}/
 		buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libcrypt.so.1 /${BASELIB}/
 		buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libcrypt.so.2 /${BASELIB}/
+		buildah copy $CONTAINER $ROOTDIR/usr/lib/locale/locale-archive /usr/lib/locale/
 	fi
 
 	buildah copy $CONTAINER $ROOTDIR/${BASELIB}/libacl.so.1 /${BASELIB}/
