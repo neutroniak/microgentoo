@@ -1,0 +1,27 @@
+#!/bin/sh
+
+############# openssh client ########
+microgentoo_openssh() {
+
+	CONTAINER=$(buildah from $PREFIX/base)
+
+	export SSH_VERSION=$(chroot $CHROOTDIR ssh -V 2>&1 |sed 's/OpenSSH_//g'|sed 's/[a-z].*.$//g'| awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "openssh" $SSH_VERSION
+
+	_copy_ldd $CONTAINER /usr/sbin/sshd
+
+	buildah copy $CONTAINER $ROOTDIR/etc/ssh/moduli /etc/ssh/
+	buildah copy $CONTAINER $ROOTDIR/etc/ssh/ssh_config /etc/ssh/
+
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/ssh /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/scp /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/sftp /usr/bin/
+	buildah copy $CONTAINER $ROOTDIR/usr/sbin/sshd /usr/sbin/
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER $PREFIX/openssh:${SSH_VERSION}
+	buildah rm $CONTAINER
+}
+
