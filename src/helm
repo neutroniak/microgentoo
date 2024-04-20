@@ -1,0 +1,19 @@
+#!/bin/sh
+
+############# helm ################
+microgentoo_helm() {
+
+	CONTAINER=$(buildah from $PREFIX/base)
+
+	export HELM_VERSION_LABEL=$(chroot $CHROOTDIR helm version --short|sed 's/v//g' | line 1|awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "helm" $HELM_VERSION_LABEL
+
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/helm /usr/bin/
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER $PREFIX/helm:${HELM_VERSION_LABEL}
+	buildah rm $CONTAINER
+}
+
