@@ -15,6 +15,7 @@ microgentoo_nginx() {
 	buildah copy $CONTAINER $ROOTDIR/var/www/ /var/www/
 
 	buildah run $CONTAINER -- mkdir -p /var/log/nginx
+	buildah run $CONTAINER -- mkdir -p /run/nginx
 	buildah run $CONTAINER -- mkdir -p /var/lib/nginx/tmp
 
 	buildah run $CONTAINER -- groupadd nginx
@@ -22,6 +23,7 @@ microgentoo_nginx() {
 
 	buildah run $CONTAINER -- chown -R nginx:nginx /var/log/nginx
 	buildah run $CONTAINER -- chown -R nginx:nginx /var/lib/nginx
+	buildah run $CONTAINER -- chown -R nginx:nginx /run/nginx
 	
 	# clean and commit
 	_cleanup_utils $CONTAINER
