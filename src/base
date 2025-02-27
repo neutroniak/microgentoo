@@ -4,7 +4,7 @@ microgentoo_base() {
 
 	CONTAINER=$(buildah from scratch)
 
-	export CHOST=$(chroot $CHROOTDIR emerge -- --info |grep CHOST|sed 's/CHOST="//g'|sed 's/"//g')
+	export CHOST=$(chroot $CHROOTDIR emerge --info |grep CHOST|sed 's/CHOST="//g'|sed 's/"//g')
 	export GCC_MAJOR=$(chroot $CHROOTDIR gcc --version|sed 's/gcc (Gentoo //g'|line 0|sed 's/\..*//g'|sed 's/^.* //g')
 
 	_print_header "base" "latest"
@@ -67,15 +67,15 @@ microgentoo_base() {
 
 	# usr
 
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypt.so.1 /${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypt.so.2 /${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libacl.so.1 /${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libattr.so.1 /${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libbz2.so.1 /${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libreadline.so.8 /${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypt.so.1 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypt.so.2 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libacl.so.1 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libattr.so.1 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libbz2.so.1 /usr/${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libreadline.so.8 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libcrypto.so.3 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libbsd.so.0 /usr/${BASELIB}/
-	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libz.so.1 /${BASELIB}/
+	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libz.so.1 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libmd.so.0 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libssl.so.3 /usr/${BASELIB}/
 	buildah copy $CONTAINER $ROOTDIR/usr/${BASELIB}/libffi.so.8 /usr/${BASELIB}/
@@ -90,7 +90,7 @@ microgentoo_base() {
 
 	# other
 	buildah copy $CONTAINER $ROOTDIR/usr/share/ca-certificates/ /usr/share/ca-certificates/
-	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,var/log,var/tmp,sbin,/usr/bin}
+	buildah run $CONTAINER -- mkdir /{root,var,tmp,var/empty,var/log,var/tmp,sbin}
 	buildah run $CONTAINER -- chmod 777 /tmp
 
 	buildah commit $CONTAINER $PREFIX/base:latest
