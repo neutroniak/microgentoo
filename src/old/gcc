@@ -1,0 +1,20 @@
+#!/bin/sh
+
+############# gcc ###################
+microgentoo_gcc() {
+
+	CONTAINER=$(buildah from $PREFIX/base)
+
+	export GCC_VERSION=$(chroot $CHROOTDIR gcc --version|line 1|awk '{print $4}'|awk -F "." '{print $1"."$2.".y"}')
+
+	_print_header "gcc" $GCC_VERSION
+
+	buildah copy $CONTAINER $ROOTDIR/usr/bin/env /usr/bin/
+
+	_copy_ldd $CONTAINER /usr/bin/gcc
+
+	# clean and commit
+	_cleanup_utils $CONTAINER
+	buildah commit $CONTAINER $PREFIX/gcc:${GCC_VERSION}
+	buildah rm $CONTAINER
+}

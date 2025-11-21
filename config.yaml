@@ -1,0 +1,96 @@
+hardened:
+  chroot: "/mnt/env/chroot/gentoo/gnu/gcc/hardened"
+  prefix: "amd64/hardened"
+  patch: "y"
+  containers:
+    base:
+      name: base
+      packages:
+        - app-shells/bash
+        - sys-libs/glibc
+        - sys-apps/coreutils
+        - sys-apps/baselayout
+    php:
+      name: php-fpm
+      packages:
+        - sys-apps/baselayout
+        - dev-php/pecl-redis
+        - dev-php/pecl-uuid
+        - dev-lang/php:8.3
+    python-3.13:
+      name: python
+      packages:
+        - sys-apps/baselayout
+        - dev-lang/python-exec
+        - dev-lang/python:3.13
+    python-3.14:
+      name: python
+      packages:
+        - sys-apps/baselayout
+        - dev-lang/python-exec
+        - dev-lang/python:3.14
+    packer:
+      name: packer
+      packages:
+        - sys-apps/baselayout
+        - dev-util/packer
+    perl:
+      name: perl
+      packages:
+        - sys-apps/baselayout
+        - dev-lang/perl
+    nodejs:
+      name: nodejs
+      packages:
+        - sys-apps/baselayout
+        - net-libs/nodejs
+    zeromq:
+      name: zeromq
+      packages:
+        - sys-apps/baselayout
+        - net-libs/cppzmq
+        - net-libs/czmq
+        - net-libs/zeromq
+    git:
+      name: git
+      packages:
+        - sys-apps/baselayout
+        - dev-libs/libgit2
+        - dev-vcs/git
+    openssh:
+      name: openssh
+      packages:
+        - sys-apps/baselayout
+        - net-misc/openssh
+    helm:
+      name: helm
+      packages:
+        - sys-apps/baselayout
+        - sys-libs/glibc
+        - app-admin/helm
+    nginx:
+      name: nginx
+      packages:
+        - sys-apps/baselayout
+        - www-servers/nginx
+#musl:
+#  chroot: "/mnt/env/chroot/gentoo/musl/clang/default"
+#  prefix: "amd64/musl"
+#  containers:
+#    base:
+#      name: base
+#      packages:
+#        - app-shells/bash
+#        - sys-apps/glibc
+#        - sys-apps/coreutils
+#        - sys-apps/baselayout
+#    perl:
+#      name: perl
+#      packages:
+#        - dev-lang/perl
+#    nodejs:
+#      name: nodejs
+#      packages:
+#        - sys-apps/baselayout
+#        - net-libs/nodejs
+#
