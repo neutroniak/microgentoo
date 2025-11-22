@@ -2,4 +2,5 @@ config
 .vimsess
 *.swp
 *.swo
+/config.yaml
 
