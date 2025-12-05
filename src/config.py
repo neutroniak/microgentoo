@@ -2,7 +2,9 @@ import os
 import sys
 
 class Config:
-    def __init__(self):
-        
-    def parse(self, path):
+    def __init__(self, path):
+       self.path = path
+
+    def parse(self):
         return ""
+
