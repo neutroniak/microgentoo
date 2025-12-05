@@ -80,3 +80,9 @@ class Buildah:
     def umount(self, container):
         sub = subprocess.run(["buildah", "umount", container], capture_output=True, text=True)
 
+    def clean(self):
+        sub = subprocess.run(["buildah", "rmi", "--prune"])
+
+    def purge(self):
+        sub = subprocess.run(["buildah", "rmi", "-a"])
+

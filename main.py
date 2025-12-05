@@ -36,6 +36,14 @@ if __name__ == '__main__':
                 buildah = Buildah()
                 buildah.create(atoms, cfg[c]["containers"][cc])
 
+    elif(action == "clean"):
+        buildah = Buildah()
+        buildah.clean();
+
+    elif(action == "purge"):
+        buildah = Buildah()
+        buildah.purge()
+
     elif(action == "localdev"):
        print(action)
 
