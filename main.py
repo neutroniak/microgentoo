@@ -11,7 +11,7 @@ if __name__ == '__main__':
     try:
         action = sys.argv[1]
     except:
-        print("usage ./main.py <action>")
+        print("usage ./cottage <action>")
 
     if(action == "containers"):
         with open("config.yaml") as stream:
